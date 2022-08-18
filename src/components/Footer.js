@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-      <h1>this is a Footer</h1>
+      <p className="footer">Created by Aaron, Arianna, and Flora</p>
   )
 }
 
