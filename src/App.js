@@ -20,14 +20,3 @@ function App() {
 }
 
 export default App;
-
-
-
-{/*  external link:
-        
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-
- */}
