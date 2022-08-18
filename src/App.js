@@ -1,14 +1,20 @@
 
 import './App.css'
+import {BrowserRouter, Routes, Route } from "react-router-dom"
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Landing</h1>
-
-
-
-
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Landing />}></Route>
+          <Route path='/register' element={<Register />}></Route>
+          <Route path='/login' element={<Login />}></Route>
+          <Route path='/allproperties' element={<AllProperties />}></Route>
+          <Route path='/singleproperty' element={<SingleProperty />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   )  
 }
