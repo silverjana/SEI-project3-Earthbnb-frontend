@@ -24,7 +24,7 @@ function App() {
             <Route path='/register' element={<Register />}></Route>
             <Route path='/login' element={<Login />}></Route>
             <Route path='/allproperties' element={<AllProperties />}></Route>
-            <Route path='/singleproperty' element={<SingleProperty />}></Route>
+            <Route path='/allproperties/:id' element={<SingleProperty />}></Route>
             <Route path='/userprofile' element={<UserProfile />}></Route>
             <Route path='/addproperty' element={<AddProperty />}></Route>
             <Route path='/addreview' element={<AddReview />}></Route>
