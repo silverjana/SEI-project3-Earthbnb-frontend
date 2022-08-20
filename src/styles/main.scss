@@ -54,6 +54,7 @@
 
 .btn-homepage{
   border: none;
+  left: 0%;
   top: 50%;
   background: transparent;
   position: absolute;
@@ -65,7 +66,7 @@
   height: 45px;
 }
 .btn-homepage:hover {
-  opacity: 0.2;
+  opacity: 0.3;
   background-color: #e6e4da;
   color: black;
   border: solid 2px white ;
