@@ -40,20 +40,3 @@ const Landing = () => {
 
 
 export default Landing
-
-
-{/* <section className='btn-section'>
-<div className='btn-container'>
-  <img src={Cityimage} alt='city'/>
-  <button className='btn-homepage'>Head to the City</button>
-</div>
-<div className='btn-container'>
-  <img src={Countryimage} alt='country'/>
-  <button className='btn-homepage'>Escape to the Country</button>
-</div>
-<div className='btn-container'>
-  <img src={Islandimage} alt='island'/>
-  <button className='btn-homepage'>Pop to an Island</button>
-</div>
-</section>
-<Link className="btn" to='/allproperties'>Find your next Holiday</Link> */}
