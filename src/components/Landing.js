@@ -11,7 +11,7 @@ const Landing = () => {
       <main className="hero text-center">
         <h1>Earth BnB</h1>
         <p className='lead'>Plan you next sustainable holiday by choosing our green properties</p>
-        <Carousel className='carousel'>
+        <Carousel className='carousel-all'>
           <Carousel.Item interval={(1000) * 8}>
             <img className="carousel-image"  src={Cityimage} alt='city'/>
             <Carousel.Caption>
@@ -40,20 +40,3 @@ const Landing = () => {
 
 
 export default Landing
-
-
-{/* <section className='btn-section'>
-<div className='btn-container'>
-  <img src={Cityimage} alt='city'/>
-  <button className='btn-homepage'>Head to the City</button>
-</div>
-<div className='btn-container'>
-  <img src={Countryimage} alt='country'/>
-  <button className='btn-homepage'>Escape to the Country</button>
-</div>
-<div className='btn-container'>
-  <img src={Islandimage} alt='island'/>
-  <button className='btn-homepage'>Pop to an Island</button>
-</div>
-</section>
-<Link className="btn" to='/allproperties'>Find your next Holiday</Link> */}
