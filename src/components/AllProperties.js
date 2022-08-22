@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import { Link } from "react-router-dom"
+import { Carousel } from "react-bootstrap"
 
 const AllProperties = () => {
 
@@ -28,13 +29,22 @@ const AllProperties = () => {
     <Container as='main'>
       <Row>
         {allProps.map(property => {
-          const { _id, name, type, price } = property
+          const { _id, name, type, price, images } = property
           console.log(property)
           return (
             <Col key={_id}>
               <Link to={`/allproperties/${_id}`}>
                 <Card>
                   <Card.Body>
+                    <Carousel className='carousel'>
+                      {images.map((image, idx) => {
+                        return (
+                        <Carousel.Item key={idx}>
+                          <img className="carousel-image"  src={image} alt={name}/>
+                        </Carousel.Item>
+                        )
+                      })}
+                    </Carousel>
                     <Card.Title className="card-title">{name}, {type} - {price}</Card.Title>
                   </Card.Body>
                 </Card>
