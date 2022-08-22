@@ -31,7 +31,9 @@
   justify-content: flex-end;
   margin: 0 !important;
 }
+#navbar-container{
 
+}
 .user-page-btn{
   text-decoration: none;
   color: black;
@@ -67,10 +69,9 @@
   letter-spacing: 0;
 }
 .btn-homepage:hover {
-  letter-spacing: 5px;
+  letter-spacing: 3px;
   backface-visibility: hidden;
-  opacity: 0.5;
-  background-color: #e6e4da;
+  background-color: rgba(255, 255, 255, 0.652);
   color: black;
 }
 

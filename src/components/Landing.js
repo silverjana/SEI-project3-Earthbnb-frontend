@@ -1,26 +1,9 @@
 import { Link } from 'react-router-dom'
-import Cityimage from '../images/city-homepage.jpeg'
+import Cityimage from '../images/singapore-city.jpeg'
 import Countryimage from '../images/countryside-homepage.jpeg'
-import Islandimage from '../images/island-homepage.jpeg'
+import Islandimage from '../images/thailand-island.jpeg'
 import { Carousel } from 'react-bootstrap'
-// const buttonImages = [
-//   {
-//     url:'city-homepage.jpeg',
-//     title: 'Head to the City',
-//     width: '30%',
-//   },
-//   {
-//     url:'countryside-homepage.jpeg',
-//     title: 'Excape to the Country',
-//     width: '30%',
-//   },
-//   {
-//     url:'island-homepage.jpeg',
-//     title: 'Jump to an Island',
-//     width: '30%',
-//   }
 
-// ]
 
 const Landing = () => {
   return (
