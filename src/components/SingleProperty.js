@@ -14,7 +14,7 @@ const SingleProperty = () => {
   // useEffect(() => {
   //   const getData = async () => {
   //     try {
-  //       const { data } = await axios.get(`https://project3-earthbnb.herokuapp.com/allproperties/${propertyId}`)
+  //       const { data } = await axios.get(`https://project3-earthbnb.herokuapp.com/all-properties/${propertyId}`)
   //       setProperty(data)
   //     } catch (error) {
   //       console.log(error)
