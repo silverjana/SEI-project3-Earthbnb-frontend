@@ -11,7 +11,7 @@ const Landing = () => {
       <main className="hero text-center">
         <h1>Earth BnB</h1>
         <p className='lead'>Plan you next sustainable holiday by choosing our green properties</p>
-        <Carousel className='carousel'>
+        <Carousel className='carousel-all'>
           <Carousel.Item interval={(1000) * 8}>
             <img className="carousel-image"  src={Cityimage} alt='city'/>
             <Carousel.Caption>
