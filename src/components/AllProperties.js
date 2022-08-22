@@ -13,7 +13,7 @@ const AllProperties = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get('https://project3-earthbnb.herokuapp.com/allproperties')
+        const { data } = await axios.get('https://project3-earthbnb.herokuapp.com/all-properties')
         setAllProps(data)
       } catch (error) {
         console.log(error)
