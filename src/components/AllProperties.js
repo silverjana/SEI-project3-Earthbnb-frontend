@@ -34,7 +34,7 @@ const AllProperties = () => {
               <Link to={`/properties/${_id}`}>
                 <Card className="property-card">
                   <Card.Body>
-                    <Carousel className='carousel' data-wrap="false" varient='top'>
+                    <Carousel className='carousel' interval={null} variant='top'>
                       {images.map((image, idx) => {
                         return (
                         <Carousel.Item key={idx}>

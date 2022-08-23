@@ -16,17 +16,20 @@ const SingleProperty = () => {
       try {
         const { data } = await axios.get(`https://project3-earthbnb.herokuapp.com/properties/${id}`)
         setProperty(data)
-        console.log(property.name)
+        console.log(data)
       } catch (error) {
         console.log(error)
       }
     }
     getData()
-  }, [id]) 
+  }, []) 
 
   console.log(id)
   return (
-        <h1>hello</h1>
+    property ? 
+        <h1>{property.name}</h1>
+        :
+        <h1>Loading</h1>
     
   )
 }
