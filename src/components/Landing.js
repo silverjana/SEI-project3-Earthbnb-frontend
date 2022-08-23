@@ -31,7 +31,7 @@ const Landing = () => {
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
-          <Link className="btn" to='/allproperties'>Find your next Holiday</Link>
+          <Link className="btn-all-prop" to='/all-properties'>Find your next Holiday</Link>
         {/* </div> */}
       </main>
     </div>

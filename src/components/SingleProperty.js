@@ -1,30 +1,34 @@
-// import { useState, useEffect } from "react"
-// import axios from "axios"
-// import { useParams, Link } from "react-router-dom"
+import { useState, useEffect } from "react"
+import axios from "axios"
+import { useParams, Link } from "react-router-dom"
 
-// import Container from 'react-bootstrap/Container'
-// import Row from 'react-bootstrap/Row'
-// import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 const SingleProperty = () => {
 
-  // const { propertyId } = useParams()
-  // const [ property, setProperty ] = useState(null)
+  const { id } = useParams()
+  const [ property, setProperty ] = useState(null)
 
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       const { data } = await axios.get(`https://project3-earthbnb.herokuapp.com/all-properties/${propertyId}`)
-  //       setProperty(data)
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-  //   getData()
-  // }, [propertyId])
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get(`https://project3-earthbnb.herokuapp.com/properties/${id}`)
+        setProperty(data)
+        console.log(property.name)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [id]) 
 
-  // console.log(propertyId)
-  return <h1>Single Property Page</h1>
+  console.log(id)
+  return (
+        <h1>hello</h1>
+    
+  )
 }
 
 export default SingleProperty

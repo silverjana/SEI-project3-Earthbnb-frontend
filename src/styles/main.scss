@@ -32,9 +32,8 @@
   justify-content: flex-end;
   margin: 0 !important;
 }
-.carousel-all{
-  transition: none;
-}
+// .carousel-all{
+// }
 .user-page-btn{
   text-decoration: none;
   color: black;
@@ -75,7 +74,16 @@
   background-color: rgba(255, 255, 255, 0.652);
   color: black;
 }
+.btn-all-prop{
+  border-radius: 5px;
+  border: 2px solid #c2c6cc;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
 
+}
 .btn-section {
   display: flex;
   align-content: center;
@@ -85,6 +93,7 @@
 }
 .carousel-image {
   max-height: 60vh;
+  margin-bottom: 20px;
 }
 .prop-car-img {
   height: 25vh;

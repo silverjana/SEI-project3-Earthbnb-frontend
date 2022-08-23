@@ -23,20 +23,17 @@ const AllProperties = () => {
     getData()
   }, [])
 
-  console.log(allProps)
-
   return (
     <Container as='main'>
       <Row>
         {allProps.map(property => {
           const { _id, name, type, price, images } = property
-          console.log(property)
           return (
             <Col key={_id} md='4' className="mb-5">
-              <Link to={`/allproperties/${_id}`}>
+              <Link to={`/properties/${_id}`}>
                 <Card className="property-card">
                   <Card.Body>
-                    <Carousel className='carousel' varient='top'>
+                    <Carousel className='carousel' data-wrap="false" varient='top'>
                       {images.map((image, idx) => {
                         return (
                         <Carousel.Item key={idx}>
