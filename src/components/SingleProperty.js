@@ -34,11 +34,16 @@ const SingleProperty = () => {
           <Row>
               <h1 className="property-heading">{property.name}</h1>
               <div className="image-container">
+                <Col md='6'><img className="large-img" src={property.images[0]} alt={property.name}/></Col>
+                <Col md='6' mb='4' className='multi-images'>
                 {property.images.map((image, idx) => {
+                    if(idx > 0){
                       return (
-                        <img key={idx}className="indiv-img"src={image} alt={property.name}/>
+                          <img key={idx} className="indiv-img" src={image} alt={property.name}/>
                       )
+                    }
                   })}
+                  </Col>
               </div>
           </Row>
           <Row>
