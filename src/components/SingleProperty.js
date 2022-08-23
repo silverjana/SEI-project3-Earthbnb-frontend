@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import { useParams, Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -10,6 +10,7 @@ const SingleProperty = () => {
 
   const { id } = useParams()
   const [ property, setProperty ] = useState(null)
+  const [ errors, setErrors ] = useState(false)
 
   useEffect(() => {
     const getData = async () => {
@@ -18,18 +19,37 @@ const SingleProperty = () => {
         setProperty(data)
         console.log(data)
       } catch (error) {
-        console.log(error)
+        setErrors(true)
       }
     }
     getData()
-  }, []) 
+  }, [id]) 
 
+  const imageOne = []
+  
   console.log(id)
+
   return (
-    property ? 
-        <h1>{property.name}</h1>
-        :
-        <h1>Loading</h1>
+    <Container as='main'>
+      { property ?
+        <Row> 
+          <>
+            <h1 className="property-heading">{property.name}</h1>
+            <div className="image-container">
+                {property.images.map(image => {
+                  return (
+                      <img className="indiv-img"src={image} alt={property.name}/>
+                  )
+                })}
+            </div>
+          </>
+        </Row>
+      :
+      <h2>
+        { errors ? 'Something went wrong, Please try again Later' : 'Loading...'}
+      </h2>
+      }
+    </Container>
     
   )
 }
