@@ -16,6 +16,7 @@ const AllProperties = () => {
       try {
         const { data } = await axios.get('https://project3-earthbnb.herokuapp.com/all-properties')
         setAllProps(data)
+
       } catch (error) {
         console.log(error)
       }
