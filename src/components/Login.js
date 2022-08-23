@@ -38,7 +38,7 @@ const Login = () => {
       //put token in header for all requests, with bearer
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
       //go to 
-      navigate("/allproperties")
+      navigate("/all-properties")
 
     } catch (error) {
       console.log(error)
