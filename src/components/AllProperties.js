@@ -43,7 +43,7 @@ const AllProperties = () => {
                         )
                       })}
                     </Carousel>
-                    <Card.Title className="card-title">{name}, {type} - {price}</Card.Title>
+                    <Card.Title className="card-title">{name}, {type} - ppn/£{price}</Card.Title>
                   </Card.Body>
                 </Card>
               </Link>

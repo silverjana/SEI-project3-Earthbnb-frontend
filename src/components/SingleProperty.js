@@ -34,10 +34,10 @@ const SingleProperty = () => {
           <Row>
               <h1 className="property-heading">{property.name}</h1>
               <div className="image-container">
-                  {property.images.map((image, idx) => {
-                    return (
+                {property.images.map((image, idx) => {
+                      return (
                         <img key={idx}className="indiv-img"src={image} alt={property.name}/>
-                    )
+                      )
                   })}
               </div>
           </Row>
