@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom"
 
 
 
-const AddReview = () => {
+const UpdateReview = () => {
 
   //when coming back to page, scroll to top
   useEffect(() => {
@@ -88,4 +88,4 @@ const AddReview = () => {
     </main>
   )
 }
-export default AddReview
+export default UpdateReview

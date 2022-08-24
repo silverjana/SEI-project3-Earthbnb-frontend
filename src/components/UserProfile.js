@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useState } from "react"
 import axios from "axios"
 import { Row, Col, Container, Card } from "react-bootstrap"
+import { Box } from "@mui/system"
 
 const UserProfile = () => {
   //when coming back to page, scroll to top
@@ -36,8 +37,8 @@ const UserProfile = () => {
       {
         myProperties && reviews?
           <>
-            <h1>Welcome {userName}!</h1>
-            <Container as='main'>
+            <h1>Welcome <span>{userName}</span>!</h1>
+            <Container as='main' className="user-property">
               <Row>
                 <h3>Your properties:</h3>
               
@@ -50,7 +51,7 @@ const UserProfile = () => {
                         <Link to={`/properties/${_id}`}>
                           <Card className="property-card">
                             <Card.Body>
-                              <img className="prop-car-img" src={images[0]} alt={name} />
+                              <img className="prop-car-img" loading="lazy" src={images[0]} alt={name} />
                               <Card.Title className="card-title">{name}, {type} - {price}</Card.Title>
                             </Card.Body>
                           </Card>
@@ -61,7 +62,7 @@ const UserProfile = () => {
                   :
                   <div>You don't have any properties listed</div>
                 }
-                <Link className="user-page-btn" as="btn" to="/add-property" >Add a property</Link>
+                <Link className="user-page-btn navigatebtn" as="btn" to="/add-property" >Add a property</Link>
               </Row>
             </Container>
 
@@ -73,13 +74,13 @@ const UserProfile = () => {
                   reviews.map(review => {
                     const { _id, title, text, rating, propertyId} = review
                     return (
-                      <Col key={_id} md='4' className="mb-5">
+                      <Col key={_id} md='6' className="mb-5">
                         <Card className="property-card">
-                          <Card.Body>
-                            <Card.Title className="card-title">{rating} - {title}</Card.Title>
+                          <Card.Body className="my-property-card">
+                            <Card.Title className="card-title">{'⭐️'.repeat(rating)} - {title}</Card.Title>
                             <Card.Text>{text}
                             <br />
-                            {propertyId && <Link className="user-page-btn" as="link" to={`/properties/${propertyId}`}>Visit the Property</Link>}
+                            {propertyId && <Link className="user-page-btn navigatebtn" as="link" to={`/properties/${propertyId}`}>Visit the Property</Link>}
                             </Card.Text>
                           </Card.Body>
                         </Card>
@@ -95,17 +96,17 @@ const UserProfile = () => {
           :
           <>
           {error ? 
-          <>
+          <Box className="errorbox">
           {/* <div className='error-mex'>{error}</div>  */}
           <h2>Please log in to see your profile</h2> 
-          <Link className="user-page-btn" as="btn" to="/login" >log in</Link>
-          </>
+          <Link className="user-page-btn navigatebtn " as="btn" to="/login" >Go to log in </Link>
+          < br />
+          </Box>
           : 
           <div>Loading...</div> }
           </>
       }
-
-      <Link className="user-page-btn" as="btn" to="/" >Back to Home</Link>
+      {/* <Link className="user-page-btn navigatebtn" as="btn" to="/" >Back to Home</Link> */}
     </>
   )
 }

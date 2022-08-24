@@ -2,11 +2,14 @@ import { TextField } from '@mui/material'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import axios from 'axios'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-
+  //when coming back to page, scroll to top
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
 
   const [data, setData] = useState({
     userName: "",
@@ -38,7 +41,7 @@ const Login = () => {
       //put token in header for all requests, with bearer
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
       //go to 
-      navigate("/all-properties")
+      navigate("/userprofile")
 
     } catch (error) {
       console.log(error)
@@ -61,7 +64,7 @@ const Login = () => {
             <TextField error={error ? true : false } required className="form-input" id="outlined-required" name='userName' label="Username" value={data.userName} onChange={handleChange} />
             <TextField error={error ? true : false } required className="form-input" id="outlined-password-input" type="password" name='password' label="Password" value={data.password} onChange={handleChange} />
             {error && <div className='error-mex'>{error}</div>}
-            <input type="submit" value="Login" className='btn dark w-100'/>
+            <input type="submit" value="Login" className='submitbtn-fixed'/>
           </form>
         </Row>
       </Container>

@@ -17,7 +17,7 @@ const Landing = () => {
         {homeCarousel.map(image => {
           return (
             <Carousel.Item interval={(1000) * 8}>
-              <img className="carousel-image"  src={image} alt='city'/>
+              <img className="carousel-image" loading="lazy" src={image} alt='city'/>
               <Carousel.Caption>
                 <button className='btn-homepage'><Link to='/all-properties'>Find your next Holiday</Link></button>
               </Carousel.Caption>

@@ -57,7 +57,7 @@ const AllProperties = () => {
                       {images.map((image, idx) => {
                         return (
                         <Carousel.Item key={idx}>
-                          <img className="prop-car-img"  src={image} alt={name}/>
+                          <img className="prop-car-img" loading="lazy"  src={image} alt={name}/>
                         </Carousel.Item>
                         )
                       })}
