@@ -10,6 +10,9 @@ import { Carousel } from "react-bootstrap"
 const AllProperties = () => {
 
   const [ allProps, setAllProps ] = useState([])
+  const [ filterProperty, setFilterProperty ] = useState({
+    type: 'All'
+  })
 
   useEffect(() => {
     const getData = async () => {
@@ -24,12 +27,28 @@ const AllProperties = () => {
     getData()
   }, [])
 
+  const handleChange = (e) => {
+    const propertyTypes = allProps.filter(property => property.type === e.target.value)
+    setFilterProperty(propertyTypes)
+  }
+
   return (
     <Container as='main'>
+      <div className="filter-div">
+        <select className="type-select" name='type' onChange={handleChange}>
+          <option value='All'>All</option>
+          <option value='cabin'>Cabins</option>
+          <option value='city'>City</option>
+          <option value='country'>Country</option>
+          <option value='camping'>Camp</option>
+          <option value='beach'>Beach</option>
+        </select>
+      </div>
       <Row>
-        {allProps.map(property => {
-          const { _id, name, type, price, images } = property
-          return (
+      {(filterProperty.length > 0 ? filterProperty : allProps).map(property => {
+        const { _id, name, type, price, images } = property
+
+        return (
             <Col key={_id} md='4' className="mb-5">
               <Link to={`/properties/${_id}`}>
                 <Card className="property-card">
@@ -48,9 +67,8 @@ const AllProperties = () => {
                 </Card>
               </Link>
             </Col>
-          )
-        })}
-
+        )
+      })}
       </Row>
     </Container>
   )

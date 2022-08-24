@@ -17,15 +17,12 @@ const SingleProperty = () => {
       try {
         const { data } = await axios.get(`https://project3-earthbnb.herokuapp.com/properties/${id}`)
         setProperty(data)
-        console.log(data)
       } catch (error) {
         setErrors(true)
       }
     }
     getData()
   }, [id]) 
-
-  console.log(id)
 
   return (
     <Container as='main'>
@@ -50,6 +47,12 @@ const SingleProperty = () => {
             <section className="description-container">
               <h3 className='descript-heading'>Property Description:</h3>
               <p className='description-para'>{property.description}</p>
+            </section>
+          </Row>
+          <Row>
+            <section className="amenities-container">
+              <h3 className="amenities-heading">Property Amenities:</h3>
+              <p className="amenities-para">{property.amenities}</p>
             </section>
           </Row>
         </>
