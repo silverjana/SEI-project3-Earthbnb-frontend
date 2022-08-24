@@ -1,13 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.026318ca.css",
-    "main.js": "/static/js/main.748bafae.js",
+    "main.css": "/static/css/main.455f55a1.css",
+    "main.js": "/static/js/main.5f6d6d71.js",
+    "static/media/countryside-homepage.jpeg": "/static/media/countryside-homepage.e332b2594690bd8b81bb.jpeg",
+    "static/media/city-homepage.jpeg": "/static/media/city-homepage.3f0f26a9f82d3ccff8a6.jpeg",
+    "static/media/island-homepage.jpeg": "/static/media/island-homepage.cd0b461b15bb18229acb.jpeg",
     "index.html": "/index.html",
-    "main.026318ca.css.map": "/static/css/main.026318ca.css.map",
-    "main.748bafae.js.map": "/static/js/main.748bafae.js.map"
+    "main.455f55a1.css.map": "/static/css/main.455f55a1.css.map",
+    "main.5f6d6d71.js.map": "/static/js/main.5f6d6d71.js.map"
   },
   "entrypoints": [
-    "static/css/main.026318ca.css",
-    "static/js/main.748bafae.js"
+    "static/css/main.455f55a1.css",
+    "static/js/main.5f6d6d71.js"
   ]
 }
