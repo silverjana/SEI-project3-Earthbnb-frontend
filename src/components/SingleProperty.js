@@ -17,7 +17,6 @@ const SingleProperty = () => {
       try {
         const { data } = await axios.get(`https://project3-earthbnb.herokuapp.com/properties/${id}`)
         setProperty(data)
-        console.log(data)
       } catch (error) {
         setErrors(true)
       }
@@ -25,32 +24,44 @@ const SingleProperty = () => {
     getData()
   }, [id]) 
 
-  const imageOne = []
-  
-  console.log(id)
-
   return (
     <Container as='main'>
       { property ?
-        <Row> 
-          <>
-            <h1 className="property-heading">{property.name}</h1>
-            <div className="image-container">
-                {property.images.map(image => {
-                  return (
-                      <img className="indiv-img"src={image} alt={property.name}/>
-                  )
-                })}
-            </div>
-          </>
-        </Row>
-      :
-      <h2>
-        { errors ? 'Something went wrong, Please try again Later' : 'Loading...'}
-      </h2>
+        <>
+          <Row>
+              <h1 className="property-heading">{property.name}</h1>
+              <div className="image-container">
+                <Col md='6'><img className="large-img" src={property.images[0]} alt={property.name}/></Col>
+                <Col md='6' mb='4' className='multi-images'>
+                {property.images.map((image, idx) => {
+                    if(idx > 0){
+                      return (
+                          <img key={idx} className="indiv-img" src={image} alt={property.name}/>
+                      )
+                    }
+                  })}
+                  </Col>
+              </div>
+          </Row>
+          <Row>
+            <section className="description-container">
+              <h3 className='descript-heading'>Property Description:</h3>
+              <p className='description-para'>{property.description}</p>
+            </section>
+          </Row>
+          <Row>
+            <section className="amenities-container">
+              <h3 className="amenities-heading">Property Amenities:</h3>
+              <p className="amenities-para">{property.amenities}</p>
+            </section>
+          </Row>
+        </>
+        :
+        <h2>
+          { errors ? 'Something went wrong, Please try again Later' : 'Loading...'}
+        </h2>
       }
     </Container>
-    
   )
 }
 
