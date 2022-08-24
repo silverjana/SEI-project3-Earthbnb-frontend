@@ -77,8 +77,10 @@ const UserProfile = () => {
                         <Card className="property-card">
                           <Card.Body>
                             <Card.Title className="card-title">{rating} - {title}</Card.Title>
-                            <Card.Text>{text}</Card.Text>
-                            <Link className="user-page-btn" as="btn" to="/login" >log in</Link>
+                            <Card.Text>{text}
+                            <br />
+                            {propertyId && <Link className="user-page-btn" as="link" to={`/properties/${propertyId}`}>Visit the Property</Link>}
+                            </Card.Text>
                           </Card.Body>
                         </Card>
                       </Col>
