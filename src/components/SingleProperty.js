@@ -4,7 +4,9 @@ import { useParams } from "react-router-dom"
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import ReviewContainer from './ReviewContainer';
+import { useLocation } from "react-router-dom"
+import PropertyHeading from "./PropertyHeading"
 
 const SingleProperty = () => {
 
@@ -24,42 +26,48 @@ const SingleProperty = () => {
     getData()
   }, [id]) 
 
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  console.log(property)
   return (
     <Container as='main'>
       { property ?
         <>
-          <Row>
-              <h1 className="property-heading">{property.name}</h1>
-              <div className="image-container">
-                <Col md='6'><img className="large-img" src={property.images[0]} alt={property.name}/></Col>
-                <Col md='6' mb='4' className='multi-images'>
-                {property.images.map((image, idx) => {
-                    if(idx > 0){
-                      return (
-                          <img key={idx} className="indiv-img" src={image} alt={property.name}/>
-                      )
-                    }
-                  })}
-                  </Col>
-              </div>
-          </Row>
+          <PropertyHeading images={property.images} name={property.name}/>
           <Row>
             <section className="description-container">
-              <h3 className='descript-heading'>Property Description:</h3>
+              <h3 className='descript-heading'>Description:</h3>
               <p className='description-para'>{property.description}</p>
             </section>
           </Row>
           <Row>
             <section className="amenities-container">
-              <h3 className="amenities-heading">Property Amenities:</h3>
-              <p className="amenities-para">{property.amenities}</p>
+              <h3 className="amenities-heading">Amenities:</h3>
+              <p className="amenities-para">{property.amenities.map((amenity, idx) => {
+                return ( <div key={idx}>{amenity}</div>)
+              })}</p>
             </section>
           </Row>
+
+          { property.reviews.length > 0 ?
+          <ReviewContainer reviews={property.reviews}/>
+          :
+          <div className="review-container">
+            <h3 className="review-heading">Reviews:</h3>
+            <p className="review-para">There are no reviews for this property</p>
+          </div>
+          }
+
         </>
         :
         <h2>
           { errors ? 'Something went wrong, Please try again Later' : 'Loading...'}
         </h2>
+        
       }
     </Container>
   )
