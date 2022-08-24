@@ -1,4 +1,4 @@
-
+$main-font: 'Manrope', sans-serif;
 
 #navbar-container {
   box-shadow: 0 0 10px rgb(0 0 0 / 50%);
@@ -29,7 +29,28 @@ a{
 }
 .property-card{
   height: 40vh;
+  // border: none;
+  .card-title{
+    margin-top: 10px;
+    color: black;
+    font-family: $main-font;
+    font-weight: 400;
+    font-size: 1.2rem;
+    text-align: left;
+    margin-bottom: 0;
+  }
+  .card-text{
+    color: rgb(42, 41, 41);
+    font-family: $main-font;
+    font-weight: 300;
+    text-align: left;
+    font-size: 1rem;
+    margin: 0;
+  }
 }
+// .column-allProp{
+//   padding: 0;
+// }
 .me-auto{
   display: flex;
   align-items: center;
@@ -108,11 +129,6 @@ a{
 .prop-car-img {
   height: 25vh;
 }
-.card-title{
-  margin-top: 10px;
-  color: black;
-  font-family: 'Advent Pro', sans-serif;
-}
 .image-container{
   display: flex;
   flex-wrap: wrap;
@@ -132,6 +148,8 @@ a{
 }
 .property-heading{
   padding: 30px;
+  font-family: $main-font;
+  font-weight: 500;
 }
 .large-img{
   width: 100%;
@@ -158,11 +176,17 @@ a{
   .descript-heading{
     padding: 10px;
     text-align: left;
+    font-family: $main-font;
+    font-weight: 400;
+    margin-bottom: 0;
   }
   .description-para{
     padding: 10px;
     width: 70vw;
     text-align: left;
+    font-family: $main-font;
+    font-weight: 300;
+    margin-bottom: 0;
   }
 }
 
@@ -173,11 +197,57 @@ a{
   .amenities-heading{
     padding: 10px;
     text-align: left;
+    font-weight: 400;
+    font-family: $main-font;
+    margin-bottom: 0;
   }
   .amenities-para{
     padding: 10px;
     width: 70vw;
     text-align: left;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    font-weight: 300;
+    font-family: $main-font;
+    margin-bottom: 0;
+  }
+}
+.review-container {
+  margin-top: 0;
+  padding: 40px;
+  border-bottom: 2px solid #b2c2b0;
+  .review-heading{
+    padding: 10px;
+    text-align: left;
+    font-weight: 400;
+    font-family: $main-font;
+    margin-bottom: 0;
+  }
+  .review-para{
+    padding: 10px;
+    width: 70vw;
+    text-align: left;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    font-family: $main-font;
+    margin-bottom: 0;
+    font-weight: 300;
+    .review-title {
+      font-weight: 500;
+      padding-top: 5px;
+      font-size: 18px;
+    }
+    .review-rating {
+      font-weight: 300;
+      font-size: 16px;
+    }
+    .review-text {
+      font-weight: 300;
+      padding-top: 5px;
+    }
   }
 }
 /* FORMS   */

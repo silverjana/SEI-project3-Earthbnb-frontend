@@ -49,7 +49,7 @@ const AllProperties = () => {
         const { _id, name, type, price, images } = property
 
         return (
-            <Col key={_id} md='4' className="mb-5">
+            <Col key={_id} md='4' className="column-allProp" mb="5">
               <Link to={`/properties/${_id}`}>
                 <Card className="property-card">
                   <Card.Body>
@@ -62,7 +62,8 @@ const AllProperties = () => {
                         )
                       })}
                     </Carousel>
-                    <Card.Title className="card-title">{name}, {type} - ppn/£{price}</Card.Title>
+                    <Card.Title className="card-title">{name}</Card.Title>
+                    <Card.Text className="card-text">ppn/£{price}</Card.Text>
                   </Card.Body>
                 </Card>
               </Link>
