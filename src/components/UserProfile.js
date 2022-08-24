@@ -43,7 +43,6 @@ const UserProfile = () => {
               
                 {myProperties.length > 0
                   ?
-
                   myProperties.map(property => {
                     const { _id, name, type, price, images } = property
                     return (
@@ -60,8 +59,9 @@ const UserProfile = () => {
                     )
                   })
                   :
-                  <Link className="user-page-btn" as="btn" to="/add-property" >add a property</Link>
+                  <div>You don't have any properties listed</div>
                 }
+                <Link className="user-page-btn" as="btn" to="/add-property" >Add a property</Link>
               </Row>
             </Container>
 
@@ -71,13 +71,14 @@ const UserProfile = () => {
                 {reviews.length > 0
                   ?
                   reviews.map(review => {
-                    const { _id, title, text, rating } = review
+                    const { _id, title, text, rating, propertyId} = review
                     return (
                       <Col key={_id} md='4' className="mb-5">
                         <Card className="property-card">
                           <Card.Body>
                             <Card.Title className="card-title">{rating} - {title}</Card.Title>
                             <Card.Text>{text}</Card.Text>
+                            <Link className="user-page-btn" as="btn" to="/login" >log in</Link>
                           </Card.Body>
                         </Card>
                       </Col>
@@ -93,7 +94,7 @@ const UserProfile = () => {
           <>
           {error ? 
           <>
-          <div className='error-mex'>{error}</div> 
+          {/* <div className='error-mex'>{error}</div>  */}
           <h2>Please log in to see your profile</h2> 
           <Link className="user-page-btn" as="btn" to="/login" >log in</Link>
           </>
