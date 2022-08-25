@@ -5,6 +5,7 @@ import axios from "axios"
 import { Row, Col, Container, Card } from "react-bootstrap"
 import { Box } from "@mui/system"
 import { LinearProgress } from "@mui/material"
+import { Carousel } from "react-bootstrap"
 
 const UserProfile = () => {
   //when coming back to page, scroll to top
@@ -39,7 +40,7 @@ const UserProfile = () => {
         myProperties && reviews?
           <>
             <h1>Welcome <span>{userName}</span>!</h1>
-            <Container as='main' className="user-property">
+            <Container as='main' className="user-property ">
               <Row>
                 <h3>Your properties:</h3>
               
@@ -51,10 +52,19 @@ const UserProfile = () => {
                       <Col key={_id} md='4' className="mb-5">
                         <Link to={`/properties/${_id}`}>
                           <Card className="property-card">
-                            <Card.Body>
-                              <img className="prop-car-img" loading="lazy" src={images[0]} alt={name} />
-                              <Card.Title className="card-title">{name}, {type} - {price}</Card.Title>
-                            </Card.Body>
+                          <Card.Body>
+                      <Carousel className='carousel' interval={null} variant='top'>
+                        {images.map((image, idx) => {
+                          return (
+                            <Carousel.Item key={idx}>
+                              <img className="prop-car-img" loading="lazy" src={image} alt={name} />
+                            </Carousel.Item>
+                          )
+                        })}
+                      </Carousel>
+                      <Card.Title className="card-title">{name}</Card.Title>
+                      <Card.Text className="card-text">ppn/£{price}</Card.Text>
+                    </Card.Body>
                           </Card>
                         </Link>
                       </Col>
@@ -63,12 +73,14 @@ const UserProfile = () => {
                   :
                   <div>You don't have any properties listed</div>
                 }
+                <div>
                 <Link className="user-page-btn navigatebtn" as="btn" to="/add-property" >Add a property</Link>
+                </div>
               </Row>
             </Container>
 
             <Container as='main'>
-              <Row>
+              <Row className="mt-5">
                 <h3>Your reviews:</h3>
                 {reviews.length > 0
                   ?

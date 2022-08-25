@@ -1,5 +1,3 @@
-
-import axios from "axios"
 import { useState } from "react"
 import { Container, FormGroup } from "react-bootstrap"
 
@@ -32,7 +30,6 @@ const Uploading = ({setData, data}) => {
         <input type="file" name="file" placeholder="Upload image here" onChange={UploadImage} />
         <br />
         {loading ? (<h3>Loading...</h3>) : <img src={data.images} style={{width: "200px"}}/>}
-
       </FormGroup>
     </Container>
   </div>)

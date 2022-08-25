@@ -95,6 +95,8 @@ const AddProperty = () => {
             <TextField required error={userError ? true : false} className="form-input" id="outlined-textarea" name='description' label="Description" value={data.description} onChange={handleChange} multiline />
 
             <TextField required error={userError ? true : false} className="form-input" id="outlined-required" name='price' label="price" value={data.price} onChange={handleChange} />
+
+            <TextField required error={userError ? true : false} className="form-input" id="outlined-required" name='amenities' label="Amenities" value={data.amenities} onChange={handleChange} />
             
             <Uploading name='images' setData={setData} data={data}/>
           
