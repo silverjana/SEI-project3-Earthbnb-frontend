@@ -30,6 +30,7 @@ const UpdateReview = () => {
 
   const [error, setError] = useState('')
   const [message, setMessage] = useState("")
+  const [reviews, setReviews] = useState("")
 
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value })
@@ -37,6 +38,28 @@ const UpdateReview = () => {
     console.log(data)
   }
 
+  //!get old revierw data
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get(`https://project3-earthbnb.herokuapp.com/user-profile`)
+        setReviews(data.user.reviews)
+      } catch (error) {
+        console.log(error)
+        setError(error.response.data.message)
+      }
+    }
+    getData()
+  }, [])
+
+  setReviews(reviews.filter(review => review.createdBy = reviewId))
+  console.log(reviews)
+
+  setData(...reviews)
+  (console.log(data))
+
+  
   
   const onSubmit = async (event) => {
 
@@ -47,7 +70,7 @@ const UpdateReview = () => {
       const res = await axios.put(`https://project3-earthbnb.herokuapp.com/properties/${propertyId}/${reviewId}`, data)
       setError("")
       //save the response
-      //setMessage(res.data.message)
+      setMessage(res.data.message)
       console.log(res.data)
       //WAIT and go to 
       setTimeout(navigate("/userprofile"), 4000)
@@ -72,7 +95,7 @@ const UpdateReview = () => {
             <h3 className="text-center">Update your review</h3>
             <Box className='submitbox'>
               <div>Rating *</div>
-              <Slider aria-label="Rating" defaultValue={1} valueLabelDisplay="auto" step={1} marks min={1} max={5} onChange={handleChange} name="rating" />
+              <Slider aria-label="Rating" defaultValue={data.rating} valueLabelDisplay="auto" step={1} marks min={1} max={5} onChange={handleChange} name="rating" />
               <TextField required className="form-input" id="outlined 1" name="title" label="Title" value={data.title} onChange={handleChange} />
               <TextareaAutosize required className="form-input autosize" id="outlined-required" minRows={2} name="text" placeholder="Text *" value={data.text} onChange={handleChange} />
               {error && <div className="error-mex">{error}</div>}
