@@ -23,16 +23,16 @@ const UpdateReview = () => {
   let { propertyId, reviewId } = useParams()
 
   const [data, setData] = useState({
-    // rating: "",
-    // title: "",
-    // text: "",
+    rating: 0,
+    title: "",
+    text: "",
   })
 
   const navigate = useNavigate()
 
   const [error, setError] = useState('')
   const [message, setMessage] = useState('')
-  const [oldData, setOldData] = useState([])
+  const [oldData, setOldData] = useState(null)
 
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value })
@@ -40,13 +40,13 @@ const UpdateReview = () => {
     console.log("handlechange data: ", data)
   }
 
-  //!get old revierw data
+  //!get old review data
 
   useEffect(() => {
     const getData = async () => {
       try {
         console.log({ propertyId }, { reviewId })
-        const { data } = await axios.get(`${API_URL}/properties/${propertyId}/reviews/${reviewId}`)
+        const { data } = await axios.get(`${API_URL}/user/${reviewId}`)
         setOldData(data)
       } catch (error) {
         console.log(error)
@@ -56,12 +56,26 @@ const UpdateReview = () => {
     getData()
   }, [])
 
+useEffect(() => {
+  async function setplaceholder() {
+    //console.log("old data", oldData)
+    const { oldReview } =  await oldData
+    console.log(oldReview)
+    const {title, text, rating } = await oldReview
+    console.log(title)
+    setData({rating, title, text})
+  }
+  setplaceholder();
+}, [oldData] )
 
-  console.log("old data", oldData)
-  const { oldReview } = oldData
+
+  //setData({rating, title, text})
+
+  
+
+  //setData({oldReview})
 
   //setData with the old review spread -> is the value/shows in text fields
-
 
   const onSubmit = async (event) => {
 
@@ -97,7 +111,7 @@ const UpdateReview = () => {
             <h3 className="text-center">Update your review</h3>
             <Box className='submitbox'>
               <div>Rating *</div>
-              <Slider aria-label="Rating" defaultValue={data.rating} valueLabelDisplay="auto" step={1} marks min={1} max={5} onChange={handleChange} name="rating" />
+              <Slider aria-label="Rating" defaultValue={5} valueLabelDisplay="auto" step={1} marks min={0} max={5} onChange={handleChange} name="rating" value={data.rating? data.rating : 5}/>
               <TextField required className="form-input" id="outlined 1" name="title" label="Title" value={data.title} onChange={handleChange} />
               <TextareaAutosize required className="form-input autosize" id="outlined-required" minRows={2} name="text" placeholder="Text *" value={data.text} onChange={handleChange} />
               {error && <div className="error-mex">{error}</div>}

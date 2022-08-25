@@ -238,10 +238,6 @@ a {
   }
 }
 
-.footer {
-  min-height: 100vh;
-}
-
 .description-container {
   margin-top: 20px;
   padding: 40px;
@@ -367,6 +363,10 @@ a {
 
 /* ---   USERPROFILE ---  */
 
+.spaced{
+  margin: 20px;
+}
+
 span {
   color: $btn-hover-text;
 }
@@ -391,19 +391,25 @@ span {
   background-color: white;
 }
 .submitbox {
-  min-width: 60%;
+  min-width: 65%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   min-height: 40vh;
   margin-top: 15px;
-
+  
+  div{
+    max-width: 194px;
+  }
 }
+
 
 /* -  background -  */
 
 .form-page {
   background-color: $form-bgcolor;
+  min-height: 90vh;
 }
 
 /* error / ok message */
@@ -424,6 +430,16 @@ span {
   margin: 9px;
 }
 
+/* -- select input -- */
+
+.type-select{
+  width: 194px;
+  margin-bottom: 15px;
+  padding: 17px 9px;
+  border: 1px solid #b6b6b6;
+  border-radius: 4px;
+  color: #626262;
+}
 
 /* --  BUTTONS --  */
 
@@ -435,6 +451,14 @@ span {
   border: 1px solid #b6b6b6;
   border-radius: 4px;
 }
+
+// #file-upload-button{
+//   margin: 3px auto;
+//   background-color: $button-color !important;
+//   align-self: center;
+//   border: 1px solid #b6b6b6;
+//   border-radius: 4px;
+// }
 
 .submitbtn:hover {
   color: $btn-hover-text;
@@ -457,6 +481,12 @@ span {
   max-width: 200px;
   align-self: center;
   margin:8px;
+}
+
+.delete-review{
+  color: rgb(218, 5, 5);
+  background-color: rgba(218, 5, 5, 0.172);
+  padding: 9px;
 }
 
 /* -  add review -  */

@@ -25,7 +25,7 @@ const Uploading = ({setData, data}) => {
   }
   return ( <div>
     <Container>
-      <h1>Upload images</h1>
+      <h5>Upload image</h5>
       <FormGroup>
         <input type="file" name="file" placeholder="Upload image here" onChange={UploadImage} />
         <br />

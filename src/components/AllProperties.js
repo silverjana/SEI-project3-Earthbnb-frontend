@@ -37,7 +37,7 @@ const AllProperties = () => {
   return (
     <Container as='main'>
       <div className="filter-div">
-        <select className="type-select" name='type' onChange={handleChange}>
+        <select className="type-select-all" name='type' onChange={handleChange}>
           <option value='All'>All</option>
           <option value='cabin'>Cabins</option>
           <option value='city'>City</option>
