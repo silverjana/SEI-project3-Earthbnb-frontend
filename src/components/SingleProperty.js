@@ -63,8 +63,8 @@ const SingleProperty = () => {
 
           {property.reviews.length > 0 ?
             <>
-              <ReviewContainer reviews={property.reviews} />
-              <Link className="user-page-btn navigatebtn" as="link" to={`/review/${id}`}>Leave a review</Link>
+              <ReviewContainer reviews={property.reviews} id={id}/>
+              
             </>
             :
             <div className="review-container">

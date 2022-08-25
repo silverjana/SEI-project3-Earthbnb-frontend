@@ -1,5 +1,7 @@
 import Row from 'react-bootstrap/Row'
-const ReviewContainer = ({reviews}) => {
+import { Link } from 'react-router-dom'
+
+const ReviewContainer = ({reviews, id}) => {
     return (
         <Row>
             <section className="review-container">
@@ -16,7 +18,7 @@ const ReviewContainer = ({reviews}) => {
                     )
                 })}
               </p>
-              
+              <Link className="user-page-btn navigatebtn" as="link" to={`/review/${id}`}>Leave a review</Link>
             </section>
           </Row>
           )
