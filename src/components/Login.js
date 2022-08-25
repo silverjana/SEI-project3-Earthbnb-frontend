@@ -2,10 +2,10 @@ import { TextField } from '@mui/material'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import axios from 'axios'
-import { useState, useEffect, Link } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { API_URL } from '../config'
-
+import { Link } from 'react-router-dom'
 const Login = () => {
   //when coming back to page, scroll to top
   useEffect(() => {
@@ -70,7 +70,12 @@ const Login = () => {
             <TextField error={error ? true : false} required className="form-input" id="outlined-password-input" type="password" name='password' label="Password" value={data.password} onChange={handleChange} />
             {error && <div className='error-mex'>{error}</div>}
             <input type="submit" value="Login" className='submitbtn-fixed' />
-            {login && <button className='btn oksubmit' onClick={handleClick}>Done! Click here to go back</button>}
+            {login && 
+            <>
+            <button className='btn oksubmit' onClick={handleClick}>Done! Click here to go back</button>
+            <Link className="btn oksubmit" as="btn" to="/" >Or click here to go to Home</Link>
+            
+            </>}
           </form>
         </Row>
       </Container>

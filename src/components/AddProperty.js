@@ -86,7 +86,7 @@ const AddProperty = () => {
             <TextField required error={userError ? true : false} className="form-input" id="outlined-required" name='name' label="Property Name" value={data.name} onChange={handleChange} />
             <div className="select-property-type">
               <select className="type-select" name='type' onChange={handleChange}>
-                  <option disabled value='All'>Choose type</option>
+                  <option selected={true} disabled value='All'>Choose type</option>
                   <option value='cabin'>Cabins</option>
                   <option value='city'>City</option>
                   <option value='country'>Country</option>
