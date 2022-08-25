@@ -38,6 +38,14 @@ const UserProfile = () => {
   const handleDelete = async (propertyId, reviewId) => {
     try {
       console.log({propertyId}, {reviewId})
+      const deleteReview = await axios.delete(`${API_URL}/properties/${propertyId}/reviews/${reviewId}`)
+      console.log('button clicked to delete review ->', deleteReview)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  return (
     <>
       {
         myProperties && reviews ?
