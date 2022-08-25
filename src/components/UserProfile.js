@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useEffect } from "react"
 import { useState } from "react"
 import axios from "axios"
@@ -32,6 +32,18 @@ const UserProfile = () => {
   const { userName, reviews, myProperties } = userData
   console.log(myProperties, reviews, userName)
 
+ 
+
+  const handleDelete = async (propertyId, reviewId) => {
+    try {
+      console.log({propertyId}, {reviewId})
+      const deleteReview = await axios.delete(`https://project3-earthbnb.herokuapp.com/properties/${propertyId}/reviews/${reviewId}`)
+      console.log('button clicked to delete review ->', deleteReview)
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
 
   return (
     <>
@@ -83,6 +95,7 @@ const UserProfile = () => {
                             <br />
                             {propertyId && <Link className="user-page-btn navigatebtn" as="link" to={`/properties/${propertyId}`}>Visit the Property</Link>}
                             </Card.Text>
+                            <button className="delete-review" onClick={() => handleDelete(propertyId, _id)}>Delete This Review</button> 
                           </Card.Body>
                         </Card>
                       </Col>
