@@ -4,13 +4,22 @@ import { useParams } from "react-router-dom"
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import ReviewContainer from './ReviewContainer';
+import { useLocation } from "react-router-dom"
+import PropertyHeading from "./PropertyHeading"
+import { Link } from "react-router-dom"
+import { LinearProgress } from "@mui/material"
 
 const SingleProperty = () => {
+  //when coming back to page, scroll to top
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
+
 
   const { id } = useParams()
-  const [ property, setProperty ] = useState(null)
-  const [ errors, setErrors ] = useState(false)
+  const [property, setProperty] = useState(null)
+  const [errors, setErrors] = useState(false)
 
   useEffect(() => {
     const getData = async () => {
@@ -22,45 +31,54 @@ const SingleProperty = () => {
       }
     }
     getData()
-  }, [id]) 
+  }, [id])
 
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+  }, [pathname]);
+
+  console.log(property)
   return (
     <Container as='main'>
-      { property ?
+      {property ?
         <>
-          <Row>
-              <h1 className="property-heading">{property.name}</h1>
-              <div className="image-container">
-                <Col md='6'><img className="large-img" src={property.images[0]} alt={property.name}/></Col>
-                <Col md='6' mb='4' className='multi-images'>
-                {property.images.map((image, idx) => {
-                    if(idx > 0){
-                      return (
-                          <img key={idx} className="indiv-img" src={image} alt={property.name}/>
-                      )
-                    }
-                  })}
-                  </Col>
-              </div>
-          </Row>
+          <PropertyHeading images={property.images} name={property.name} />
           <Row>
             <section className="description-container">
-              <h3 className='descript-heading'>Property Description:</h3>
+              <h3 className='descript-heading'>Description:</h3>
               <p className='description-para'>{property.description}</p>
             </section>
           </Row>
           <Row>
             <section className="amenities-container">
-              <h3 className="amenities-heading">Property Amenities:</h3>
-              <p className="amenities-para">{property.amenities}</p>
+              <h3 className="amenities-heading">Amenities:</h3>
+              <p className="amenities-para">{property.amenities.map((amenity, idx) => {
+                return (<div key={idx}>{amenity}</div>)
+              })}</p>
             </section>
           </Row>
+
+          {property.reviews.length > 0 ?
+            <>
+            <ReviewContainer reviews={property.reviews} />
+            <Link className="user-page-btn navigatebtn" as="link" to={`/review/${id}`}>Leave a review</Link>
+            </>
+            :
+            <div className="review-container">
+              <h3 className="review-heading">Reviews:</h3>
+              <p className="review-para">There are no reviews for this property</p>
+              <Link className="user-page-btn navigatebtn" as="link" to={`/review/${id}`}>Leave a review</Link>
+            </div>
+          }
         </>
         :
-        <h2>
-          { errors ? 'Something went wrong, Please try again Later' : 'Loading...'}
-        </h2>
+          <h2>
+            {errors ? 'Something went wrong, Please try again Later' : <div className="loading-bar"> <br /> <LinearProgress color="success"/> </div> }
+          </h2>  
       }
+      
     </Container>
   )
 }
