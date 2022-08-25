@@ -8,8 +8,14 @@ import ReviewContainer from './ReviewContainer';
 import { useLocation } from "react-router-dom"
 import PropertyHeading from "./PropertyHeading"
 import { Link } from "react-router-dom"
+import { LinearProgress } from "@mui/material"
 
 const SingleProperty = () => {
+  //when coming back to page, scroll to top
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
+
 
   const { id } = useParams()
   const [property, setProperty] = useState(null)
@@ -69,7 +75,7 @@ const SingleProperty = () => {
         </>
         :
           <h2>
-            {errors ? 'Something went wrong, Please try again Later' : 'Loading...'}
+            {errors ? 'Something went wrong, Please try again Later' : <div className="loading-bar"> <br /> <LinearProgress color="success"/> </div> }
           </h2>  
       }
       

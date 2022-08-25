@@ -1,9 +1,20 @@
-$main-font: 'Manrope', sans-serif;
+@font-face {
+  font-family: 'Greenwall';
+  src: url('../fonts/Greenwall.otf')
+}
+
+@font-face {
+  font-family: 'Kobajeon';
+  src: local('Kobajeon'), url('../fonts/Kobajeon.otf') format('opentype');
+}
+
 /* ---   VARIABLES  ---  */
 
-$button-color: rgb(166, 202, 133);
-$button-hover-bg:rgba(157, 215, 129, 0.147);
-$btn-hover-text:rgb(151, 185, 118);
+$main-font: 'Manrope', sans-serif;
+
+$button-color: rgb(153, 199, 152);
+$button-hover-bg: rgba(157, 215, 129, 0.147);
+$btn-hover-text: rgb(139, 183, 138);
 $form-bgcolor: rgb(147, 180, 116, 0.4);
 
 
@@ -315,14 +326,52 @@ a {
   }
 }
 
+/* ---   LOADING  ---  */
+
+.loading-bar {
+  margin: 50px;
+}
+
+/* ---   LANDING ---  */
+
+.landing-title {
+  font-family:Kobajeon;
+  color: $btn-hover-text;
+  text-shadow: 2px 2px 4px rgb(49, 59, 53);
+  font-size: 11rem;
+  padding: 0;
+  margin: auto;
+}
+.landing-title-sm{
+  font-family:Kobajeon;
+  color: $btn-hover-text;
+  text-shadow: 1px 1px 0px rgb(49, 59, 53);
+  font-size: 1.9rem;
+  padding: 0;
+  margin:0;
+  
+}
+.landing-title-sm:hover{
+  color: $form-bgcolor;
+  text-shadow: none;
+}
+
 /* ---   USERPROFILE ---  */
 
-span{
+span {
   color: $btn-hover-text;
 }
 
-.my-property-card{
+.my-property-card {
   min-height: max-content;
+
+  p {
+    margin-top: 10px !important;
+  }
+}
+
+.loading-bar {
+  margin: 50px;
 }
 
 /* ---   FORMS  ---  */
@@ -349,9 +398,10 @@ span{
   margin-top: 15px;
 
 }
+
 /* -  background -  */
 
-.form-page{
+.form-page {
   background-color: $form-bgcolor;
 }
 
@@ -389,9 +439,11 @@ span{
   border-radius: 4px;
   border-color: #b6b6b6;
 }
-slider{
+
+slider {
   margin: 5px;
 }
+
 /* -  login/register -  */
 
 .submitbtn-fixed {
@@ -424,6 +476,27 @@ slider{
   }
 }
 
-a{
+a {
   color: $btn-hover-text;
 }
+
+
+/* ---  FOOTER ---  */
+
+footer{
+  position:fixed;
+  max-height: 100px;
+  bottom: 0;
+  width: 100vw;
+  background-color:$button-color;
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.6);
+  p{
+    align-self: center;
+    margin: 10px;
+    color: #626262;
+    a {
+      color: rgb(2, 101, 17);
+    }
+  }
+}
+

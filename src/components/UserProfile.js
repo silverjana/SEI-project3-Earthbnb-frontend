@@ -4,6 +4,7 @@ import { useState } from "react"
 import axios from "axios"
 import { Row, Col, Container, Card } from "react-bootstrap"
 import { Box } from "@mui/system"
+import { LinearProgress } from "@mui/material"
 
 const UserProfile = () => {
   //when coming back to page, scroll to top
@@ -103,7 +104,7 @@ const UserProfile = () => {
           < br />
           </Box>
           : 
-          <div>Loading...</div> }
+          <div className="loading-bar"> <br /> <LinearProgress color="success"/> </div> }
           </>
       }
       {/* <Link className="user-page-btn navigatebtn" as="btn" to="/" >Back to Home</Link> */}

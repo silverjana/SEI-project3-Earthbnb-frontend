@@ -32,7 +32,7 @@ function App() {
           <Route path='/userprofile' element={<UserProfile />}></Route>
           <Route path='/add-property' element={<AddProperty />}></Route>
           <Route path='/review/:propertyId' element={<AddReview />}></Route>
-          <Route path='/review/update/:propertyId' element={<UpdateReview />}></Route>
+          <Route path='/review-update/:propertyId/:reviewId' element={<UpdateReview />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -49,7 +49,7 @@ const AddReview = () => {
       //save the response
       setMessage(res.data.message)
       //WAIT and go to 
-      setTimeout(navigate("/userprofile"), 2000)
+      setTimeout(navigate("/userprofile"), 4000)
 
 
     } catch (error) {

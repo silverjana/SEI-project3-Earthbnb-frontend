@@ -6,11 +6,13 @@ import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import { Link } from "react-router-dom"
 import { Carousel } from "react-bootstrap"
+import { LinearProgress } from "@mui/material"
+
 
 const AllProperties = () => {
 
-  const [ allProps, setAllProps ] = useState([])
-  const [ filterProperty, setFilterProperty ] = useState({
+  const [allProps, setAllProps] = useState([])
+  const [filterProperty, setFilterProperty] = useState({
     type: 'All'
   })
 
@@ -45,31 +47,35 @@ const AllProperties = () => {
         </select>
       </div>
       <Row>
-      {(filterProperty.length > 0 ? filterProperty : allProps).map(property => {
-        const { _id, name, type, price, images } = property
+        {(filterProperty.length > 0 ? filterProperty : allProps).map(property => {
+          const { _id, name, type, price, images } = property
 
-        return (
+          return (
             <Col key={_id} md='4' className="column-allProp" mb="5">
-              <Link to={`/properties/${_id}`}>
-                <Card className="property-card">
-                  <Card.Body>
-                    <Carousel className='carousel' interval={null} variant='top'>
-                      {images.map((image, idx) => {
-                        return (
-                        <Carousel.Item key={idx}>
-                          <img className="prop-car-img" loading="lazy"  src={image} alt={name}/>
-                        </Carousel.Item>
-                        )
-                      })}
-                    </Carousel>
-                    <Card.Title className="card-title">{name}</Card.Title>
-                    <Card.Text className="card-text">ppn/£{price}</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Link>
+              {name ?
+                <Link to={`/properties/${_id}`}>
+                  <Card className="property-card">
+                    <Card.Body>
+                      <Carousel className='carousel' interval={null} variant='top'>
+                        {images.map((image, idx) => {
+                          return (
+                            <Carousel.Item key={idx}>
+                              <img className="prop-car-img" loading="lazy" src={image} alt={name} />
+                            </Carousel.Item>
+                          )
+                        })}
+                      </Carousel>
+                      <Card.Title className="card-title">{name}</Card.Title>
+                      <Card.Text className="card-text">ppn/£{price}</Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Link>
+                :
+                <div className="loading-bar"> <br /> <LinearProgress color="success" /> </div>
+              }
             </Col>
-        )
-      })}
+          )
+        })}
       </Row>
     </Container>
   )

@@ -18,7 +18,7 @@ const UpdateReview = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   }, [])
 
-  let { propertyId } = useParams()
+  let { propertyId, reviewId } = useParams()
 
   const [data, setData] = useState({
     rating: "",
@@ -37,19 +37,20 @@ const UpdateReview = () => {
     console.log(data)
   }
 
-  //
+  
   const onSubmit = async (event) => {
 
     event.preventDefault()
 
     try {
       // API request -> POST req
-      const res = await axios.post(`https://project3-earthbnb.herokuapp.com/review/${propertyId}`, data)
-      //setError(null)
+      const res = await axios.put(`https://project3-earthbnb.herokuapp.com/properties/${propertyId}/${reviewId}`, data)
+      setError("")
       //save the response
-      setMessage(res.data.message)
+      //setMessage(res.data.message)
+      console.log(res.data)
       //WAIT and go to 
-      setTimeout(navigate("/userprofile"), 2000)
+      setTimeout(navigate("/userprofile"), 4000)
 
 
     } catch (error) {
@@ -57,29 +58,25 @@ const UpdateReview = () => {
 
       setError(error.response.data.message)
 
-
-
       //! error on forms
       //helperText={error ? "Incorrect entry" : false}
       //error={error ? true : false }
     }
   }
 
-  // getAriaValueText={data.rating} 
-
   return (
     <main className='form-page'>
       <Container>
         <Row>
           <form className='form' onSubmit={onSubmit}>
-            <h3 className="text-center">Your Review</h3>
+            <h3 className="text-center">Update your review</h3>
             <Box className='submitbox'>
               <div>Rating *</div>
               <Slider aria-label="Rating" defaultValue={1} valueLabelDisplay="auto" step={1} marks min={1} max={5} onChange={handleChange} name="rating" />
               <TextField required className="form-input" id="outlined 1" name="title" label="Title" value={data.title} onChange={handleChange} />
               <TextareaAutosize required className="form-input autosize" id="outlined-required" minRows={2} name="text" placeholder="Text *" value={data.text} onChange={handleChange} />
               {error && <div className="error-mex">{error}</div>}
-              <input type="submit" value="Submit review" className='submitbtn' />
+              <input type="submit" value="Update" className='submitbtn' />
               {{ message } && <div className="oksubmit">{message}</div>}
             </Box>
           </form>
