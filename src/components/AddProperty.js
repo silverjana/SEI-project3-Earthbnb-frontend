@@ -6,15 +6,22 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Form from 'react-bootstrap/Form';
+import { useEffect } from "react"
+import Uploading from "./Uploading.js";
 
 
 const AddProperty = () => {
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
+
   const [data, setData] = useState({
     name: "",
-    description: "",
     type: "",
-    confirmPassword: "",
+    description: "",
+    price: "",
+    images: ""
   })
 
   const navigate = useNavigate()
@@ -75,52 +82,27 @@ const AddProperty = () => {
             <h3 className="text-center">Add Property</h3>
             {/* add value={formData.username; .email; .password; .passwordConfirmation} */}
             <TextField required error={userError ? true : false} className="form-input" id="outlined-required" name='name' label="Property Name" value={data.name} onChange={handleChange} />
+            <div className="select-property-type">
+              <select className="type-select" name='type' onChange={handleChange}>
+                  <option value='All'>All</option>
+                  <option value='cabin'>Cabins</option>
+                  <option value='city'>City</option>
+                  <option value='country'>Country</option>
+                  <option value='camping'>Camp</option>
+                  <option value='beach'>Beach</option>
+               </select>
+            </div>
             <TextField required error={userError ? true : false} className="form-input" id="outlined-textarea" name='description' label="Description" value={data.description} onChange={handleChange} multiline />
-            <h6 className="text-center">please select one</h6>
-            {['radio'].map((type) => (
-        <div key={`default-${type}`} className="mb-3">
-          <Form.Check 
-            type={type}
-            id={`default-${type}`}
-            label={`beach`}
-            name="group1"
-            value={data.type}
-            onChange={handleChange}
-          />
-           <Form.Check 
-            type={type}
-            id={`default-${type}`}
-            label={`cabin`}
-            name="group1"
-            value={data.type}
-            onChange={handleChange}
-          />
-           <Form.Check 
-            type={type}
-            id={`default-${type}`}
-            label={`country`}
-            name="group1"
-            value={data.type}
-            onChange={handleChange}
-          />
-           <Form.Check 
-            type={type}
-            id={`default-${type}`}
-            label={`city`}
-            name="group1"
-            value={data.type}
-            onChange={handleChange}
-          />
-        </div>
-        
-      ))}
+
             <TextField required error={userError ? true : false} className="form-input" id="outlined-required" name='price' label="price" value={data.price} onChange={handleChange} />
-            <TextField required error={userError ? true : false} className="form-input" id="outlined-required" name='country' label="country" value={data.country} onChange={handleChange} />
-            <TextField required error={userError ? true : false} className="form-input" id="outlined-required" name='postcode' label="postcode" value={data.postcode} onChange={handleChange} />
+            
+            <Uploading name='images' setData={setData} data={data}/>
+          
             {error && <div className='error-mex'>{error}</div>}
             <input type="submit" value="Submit" className='btn dark w-100' />
           </form>
         </Row>
+       
       </Container>
     </main>
   )
