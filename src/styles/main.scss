@@ -1,17 +1,54 @@
+@font-face {
+  font-family: 'Greenwall';
+  src: url('../fonts/Greenwall.otf')
+}
+
+@font-face {
+  font-family: 'Kobajeon';
+  src: local('Kobajeon'), url('../fonts/Kobajeon.otf') format('opentype');
+}
+
+/* ---   VARIABLES  ---  */
+
 $main-font: 'Manrope', sans-serif;
-$nice-green: rgb(105, 164, 118);
+
+$button-color: rgb(153, 199, 152);
+$button-hover-bg: rgba(157, 215, 129, 0.147);
+$btn-hover-text: rgb(139, 183, 138);
+$form-bgcolor: rgb(147, 180, 116, 0.4);
+
+
+/* ---   HEADINGS  ---  */
+h1 {
+  padding: 25px;
+}
+
+h2 {
+  padding: 20px;
+}
+
+h3 {
+  padding: 15px;
+}
+
+
+/* ---   please comment what the css is about  ---  */
+
 
 #navbar-container {
   box-shadow: 0 0 10px rgb(0 0 0 / 50%);
 }
-a{
+
+a {
   text-decoration: none;
 }
+
 .form {
-  h3{
+  h3 {
     padding-bottom: 10px;
   }
-  width: 50%;
+
+  width: 60%;
   margin: 20px auto;
   box-shadow: 0px 2px 10px rgb(0 0 0 / 20%);
   border-radius: 20px;
@@ -21,17 +58,21 @@ a{
   justify-content: center;
   align-items: center;
   padding: 20px;
-  .form-input{
+
+  .form-input {
     margin-bottom: 15px;
   }
 }
+
 .dropdown-toggle::after {
-  display: none !important; 
+  display: none !important;
 }
-.property-card{
+
+.property-card {
   height: 40vh;
+
   // border: none;
-  .card-title{
+  .card-title {
     margin-top: 10px;
     color: black;
     font-family: $main-font;
@@ -40,7 +81,8 @@ a{
     text-align: left;
     margin-bottom: 0;
   }
-  .card-text{
+
+  .card-text {
     color: rgb(42, 41, 41);
     font-family: $main-font;
     font-weight: 300;
@@ -49,31 +91,39 @@ a{
     margin: 0;
   }
 }
+
 // .column-allProp{
 //   padding: 0;
 // }
-.me-auto{
+.me-auto {
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: flex-end;
   margin: 0 !important;
 }
+
 // .carousel-all{
 // }
-.user-page-btn{
+
+/* ---  buttons ---  */
+
+.user-page-btn {
   text-decoration: none;
   color: black;
   box-shadow: 0px 2px 10px rgb(0 0 0 / 30%);
   padding: 5px;
   border: 1px solid #9e9b9b;
   border-radius: 5px;
+  padding: 10px;
+  margin: 15px auto;
 }
 
 .btn-container {
   position: relative;
   width: 100%;
 }
+
 .btn-container img {
   display: block;
   position: relative;
@@ -81,9 +131,9 @@ a{
   height: 100%;
 }
 
-.btn-homepage{
+.btn-homepage {
   color: white;
-  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0, .7);
   position: relative;
   background: transparent;
   z-index: 1;
@@ -94,19 +144,23 @@ a{
   height: 45px;
   transition: all 0.6s;
   letter-spacing: 0;
+
   a {
     color: #fff;
   }
 }
+
 .btn-homepage:hover {
   letter-spacing: 3px;
   backface-visibility: hidden;
   background-color: rgba(255, 255, 255, 0.652);
+
   a {
     color: rgb(0, 0, 0);
   }
 }
-.btn-all-prop{
+
+.btn-all-prop {
   border-radius: 5px;
   border: 2px solid #c2c6cc;
   text-decoration: none;
@@ -116,6 +170,7 @@ a{
   margin-bottom: 20px;
 
 }
+
 .btn-section {
   display: flex;
   align-content: center;
@@ -123,65 +178,76 @@ a{
   justify-content: center;
   flex-wrap: nowrap;
 }
+
 .carousel-image {
   max-height: 60vh;
   margin-bottom: 20px;
 }
+
 .prop-car-img {
   height: 25vh;
 }
-.image-container{
+
+.image-container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
-.sing-img{
+
+.sing-img {
   padding: 10px;
   object-fit: cover;
 }
 
-.indiv-img{
+.indiv-img {
   height: fit-content;
   margin: 5px;
   width: 45%;
   max-height: 45%;
 
 }
-.property-heading{
+
+.property-heading {
   padding: 30px;
   font-family: $main-font;
   font-weight: 500;
 }
-.large-img{
+
+.large-img {
   width: 100%;
 }
+
 .filter-div {
   width: 100%;
   display: flex;
   justify-content: flex-start;
   margin: 15px;
-  .type-select{
+
+  .type-select {
     width: 120px;
     height: 30px;
   }
 }
 
 .footer {
-
+  min-height: 100vh;
 }
+
 .description-container {
   margin-top: 20px;
   padding: 40px;
   border-top: 2px solid #b2c2b0;
   border-bottom: 2px solid #b2c2b0;
-  .descript-heading{
+
+  .descript-heading {
     padding: 10px;
     text-align: left;
     font-family: $main-font;
     font-weight: 400;
     margin-bottom: 0;
   }
-  .description-para{
+
+  .description-para {
     padding: 10px;
     width: 70vw;
     text-align: left;
@@ -195,14 +261,16 @@ a{
   margin-top: 0;
   padding: 40px;
   border-bottom: 2px solid #b2c2b0;
-  .amenities-heading{
+
+  .amenities-heading {
     padding: 10px;
     text-align: left;
     font-weight: 400;
     font-family: $main-font;
     margin-bottom: 0;
   }
-  .amenities-para{
+
+  .amenities-para {
     padding: 10px;
     width: 70vw;
     text-align: left;
@@ -215,18 +283,21 @@ a{
     margin-bottom: 0;
   }
 }
+
 .review-container {
   margin-top: 0;
   padding: 40px;
   border-bottom: 2px solid #b2c2b0;
-  .review-heading{
+
+  .review-heading {
     padding: 10px;
     text-align: left;
     font-weight: 400;
     font-family: $main-font;
     margin-bottom: 0;
   }
-  .review-para{
+
+  .review-para {
     padding: 10px;
     width: 70vw;
     text-align: left;
@@ -236,26 +307,196 @@ a{
     font-family: $main-font;
     margin-bottom: 0;
     font-weight: 300;
+
     .review-title {
       font-weight: 500;
       padding-top: 5px;
       font-size: 18px;
     }
+
     .review-rating {
       font-weight: 300;
       font-size: 16px;
     }
+
     .review-text {
       font-weight: 300;
       padding-top: 5px;
     }
   }
 }
-/* FORMS   */
-.error-mex {
-  color: rgb(218, 5, 5);
+
+/* ---   LOADING  ---  */
+
+.loading-bar {
+  margin: 50px;
 }
 
-// .property-card {
-//   max-width: ;
-// }
+/* ---   LANDING ---  */
+
+.landing-title {
+  font-family:Kobajeon;
+  color: $btn-hover-text;
+  text-shadow: 2px 2px 4px rgb(49, 59, 53);
+  font-size: 11rem;
+  padding: 0;
+  margin: auto;
+}
+.landing-title-sm{
+  font-family:Kobajeon;
+  color: $btn-hover-text;
+  text-shadow: 1px 1px 0px rgb(49, 59, 53);
+  font-size: 1.9rem;
+  padding: 0;
+  margin:0;
+  
+}
+.landing-title-sm:hover{
+  color: $form-bgcolor;
+  text-shadow: none;
+}
+
+/* ---   USERPROFILE ---  */
+
+span {
+  color: $btn-hover-text;
+}
+
+.my-property-card {
+  min-height: max-content;
+
+  p {
+    margin-top: 10px !important;
+  }
+}
+
+.loading-bar {
+  margin: 50px;
+}
+
+/* ---   FORMS  ---  */
+.form {
+  margin: 50px auto;
+  background-color: white;
+}
+
+
+.error-mex {
+  color: rgb(218, 5, 5);
+  background-color: rgba(218, 5, 5, 0.172);
+  border-radius: 5px;
+  padding: 17px;
+  margin: 9px;
+}
+
+.submitbox {
+  min-width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 40vh;
+  margin-top: 15px;
+
+}
+
+/* -  background -  */
+
+.form-page {
+  background-color: $form-bgcolor;
+}
+
+/* --  BUTTONS --  */
+
+.submitbtn {
+  margin: 3px auto;
+  width: 50%;
+  background-color: $button-color;
+  align-self: center;
+  border: 1px solid #b6b6b6;
+  border-radius: 4px;
+}
+
+.submitbtn:hover {
+  color: $btn-hover-text;
+  background-color: $button-hover-bg;
+}
+
+.navigatebtn {
+  background-color: $button-color;
+  max-width: 200px;
+  align-self: center;
+}
+
+.navigatebtn:hover {
+  color: $btn-hover-text;
+  background-color: $button-hover-bg;
+}
+
+/* -  add review -  */
+
+.autosize {
+  padding: 14px 0px 14px 10px;
+  border-radius: 4px;
+  border-color: #b6b6b6;
+}
+
+slider {
+  margin: 5px;
+}
+
+/* -  login/register -  */
+
+.submitbtn-fixed {
+  margin-top: 10px;
+  margin-bottom: 13px;
+  width: 194px;
+  background-color: $button-color;
+  align-self: center;
+  border: 1px solid #b6b6b6;
+  border-radius: 4px;
+}
+
+.submitbtn-fixed:hover {
+  color: $btn-hover-text;
+  background-color: $button-hover-bg;
+}
+
+/* ---  ERRORS ---  */
+
+.errorbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 35vh;
+  margin-top: 15px;
+
+  a {
+    max-width: 30%;
+  }
+}
+
+a {
+  color: $btn-hover-text;
+}
+
+
+/* ---  FOOTER ---  */
+
+footer{
+  position:fixed;
+  max-height: 100px;
+  bottom: 0;
+  width: 100vw;
+  background-color:$button-color;
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.6);
+  p{
+    align-self: center;
+    margin: 10px;
+    color: #626262;
+    a {
+      color: rgb(2, 101, 17);
+    }
+  }
+}
+

@@ -7,12 +7,19 @@ import Row from 'react-bootstrap/Row'
 import ReviewContainer from './ReviewContainer';
 import { useLocation } from "react-router-dom"
 import PropertyHeading from "./PropertyHeading"
+import { Link } from "react-router-dom"
+import { LinearProgress } from "@mui/material"
 
 const SingleProperty = () => {
+  //when coming back to page, scroll to top
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
+
 
   const { id } = useParams()
-  const [ property, setProperty ] = useState(null)
-  const [ errors, setErrors ] = useState(false)
+  const [property, setProperty] = useState(null)
+  const [errors, setErrors] = useState(false)
 
   useEffect(() => {
     const getData = async () => {
@@ -24,20 +31,20 @@ const SingleProperty = () => {
       }
     }
     getData()
-  }, [id]) 
+  }, [id])
 
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   }, [pathname]);
 
   console.log(property)
   return (
     <Container as='main'>
-      { property ?
+      {property ?
         <>
-          <PropertyHeading images={property.images} name={property.name}/>
+          <PropertyHeading images={property.images} name={property.name} />
           <Row>
             <section className="description-container">
               <h3 className='descript-heading'>Description:</h3>
@@ -48,27 +55,30 @@ const SingleProperty = () => {
             <section className="amenities-container">
               <h3 className="amenities-heading">Amenities:</h3>
               <p className="amenities-para">{property.amenities.map((amenity, idx) => {
-                return ( <div key={idx}>{amenity}</div>)
+                return (<div key={idx}>{amenity}</div>)
               })}</p>
             </section>
           </Row>
 
-          { property.reviews.length > 0 ?
-          <ReviewContainer reviews={property.reviews}/>
-          :
-          <div className="review-container">
-            <h3 className="review-heading">Reviews:</h3>
-            <p className="review-para">There are no reviews for this property</p>
-          </div>
+          {property.reviews.length > 0 ?
+            <>
+            <ReviewContainer reviews={property.reviews} />
+            <Link className="user-page-btn navigatebtn" as="link" to={`/review/${id}`}>Leave a review</Link>
+            </>
+            :
+            <div className="review-container">
+              <h3 className="review-heading">Reviews:</h3>
+              <p className="review-para">There are no reviews for this property</p>
+              <Link className="user-page-btn navigatebtn" as="link" to={`/review/${id}`}>Leave a review</Link>
+            </div>
           }
-
         </>
         :
-        <h2>
-          { errors ? 'Something went wrong, Please try again Later' : 'Loading...'}
-        </h2>
-        
+          <h2>
+            {errors ? 'Something went wrong, Please try again Later' : <div className="loading-bar"> <br /> <LinearProgress color="success"/> </div> }
+          </h2>  
       }
+      
     </Container>
   )
 }

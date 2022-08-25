@@ -1,5 +1,6 @@
 import Row from 'react-bootstrap/Row'
 
+
 const ReviewContainer = ({reviews}) => {
     return (
         <Row>
@@ -17,6 +18,7 @@ const ReviewContainer = ({reviews}) => {
                     )
                 })}
               </p>
+              
             </section>
           </Row>
           )
