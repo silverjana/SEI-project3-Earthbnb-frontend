@@ -74,7 +74,6 @@ const Login = () => {
             {error && <div className='error-mex'>{error}</div>}
             <input type="submit" value="Login" className='submitbtn-fixed' />
             {login && <button className='btn oksubmit' onClick={handleClick}>Done! Click here to go back</button>}
-            <Link to="/user-profile"><button className='btn oksubmit' onClick={handleClick}>Go to your profile</button></Link>
           </form>
         </Row>
       </Container>
