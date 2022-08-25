@@ -9,6 +9,7 @@ import { useLocation } from "react-router-dom"
 import PropertyHeading from "./PropertyHeading"
 import { Link } from "react-router-dom"
 import { LinearProgress } from "@mui/material"
+import { API_URL } from "../config"
 
 const SingleProperty = () => {
   //when coming back to page, scroll to top
@@ -24,7 +25,7 @@ const SingleProperty = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get(`https://project3-earthbnb.herokuapp.com/properties/${id}`)
+        const { data } = await axios.get(`${API_URL}/properties/${id}`)
         setProperty(data)
       } catch (error) {
         setErrors(true)
@@ -36,7 +37,7 @@ const SingleProperty = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, [pathname]);
 
   console.log(property)
@@ -62,7 +63,8 @@ const SingleProperty = () => {
 
           {property.reviews.length > 0 ?
             <>
-            <ReviewContainer reviews={property.reviews} />
+              <ReviewContainer reviews={property.reviews} />
+              <Link className="user-page-btn navigatebtn" as="link" to={`/review/${id}`}>Leave a review</Link>
             </>
             :
             <div className="review-container">
@@ -73,11 +75,11 @@ const SingleProperty = () => {
           }
         </>
         :
-          <h2>
-            {errors ? 'Something went wrong, Please try again Later' : <div className="loading-bar"> <br /> <LinearProgress color="success"/> </div> }
-          </h2>  
+        <h2>
+          {errors ? 'Something went wrong, Please try again Later' : <div className="loading-bar"> <br /> <LinearProgress color="success" /> </div>}
+        </h2>
       }
-      
+
     </Container>
   )
 }

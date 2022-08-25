@@ -5,6 +5,7 @@ import axios from "axios"
 import { Row, Col, Container, Card } from "react-bootstrap"
 import { Box } from "@mui/system"
 import { LinearProgress } from "@mui/material"
+import { API_URL } from "../config"
 
 const UserProfile = () => {
   //when coming back to page, scroll to top
@@ -19,7 +20,7 @@ const UserProfile = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get(`https://project3-earthbnb.herokuapp.com/user-profile`)
+        const { data } = await axios.get(`${API_URL}/user-profile`)
         setUserData(data)
       } catch (error) {
         console.log(error)
@@ -48,13 +49,13 @@ const UserProfile = () => {
   return (
     <>
       {
-        myProperties && reviews?
+        myProperties && reviews ?
           <>
             <h1>Welcome <span>{userName}</span>!</h1>
             <Container as='main' className="user-property">
               <Row>
                 <h3>Your properties:</h3>
-              
+
                 {myProperties.length > 0
                   ?
                   myProperties.map(property => {
@@ -85,15 +86,18 @@ const UserProfile = () => {
                 {reviews.length > 0
                   ?
                   reviews.map(review => {
-                    const { _id, title, text, rating, propertyId} = review
+                    const { _id, title, text, rating, propertyId } = review
                     return (
                       <Col key={_id} md='6' className="mb-5">
-                        <Card className="property-card">
-                          <Card.Body className="my-property-card">
+                        <Card className="review-card">
+                          <Card.Body >
                             <Card.Title className="card-title">{'⭐️'.repeat(rating)} - {title}</Card.Title>
                             <Card.Text>{text}
-                            <br />
-                            {propertyId && <Link className="user-page-btn navigatebtn" as="link" to={`/properties/${propertyId}`}>Visit the Property</Link>}
+                              <br /><br />
+                              {propertyId && <>
+                                <Link className="user-page-btn navigatebtn-spaced" as="link" to={`/properties/${propertyId}`}>Visit the Property</Link>
+                                <Link className="user-page-btn navigatebtn-spaced" as="link" to={`/review-update/${propertyId}/${_id}/`}>Edit the Review</Link>
+                              </>}
                             </Card.Text>
                             <button className="delete-review" onClick={() => handleDelete(propertyId, _id)}>Delete This Review</button> 
                           </Card.Body>
@@ -109,15 +113,15 @@ const UserProfile = () => {
           </>
           :
           <>
-          {error ? 
-          <Box className="errorbox">
-          {/* <div className='error-mex'>{error}</div>  */}
-          <h2>Please log in to see your profile</h2> 
-          <Link className="user-page-btn navigatebtn " as="btn" to="/login" >Go to log in </Link>
-          < br />
-          </Box>
-          : 
-          <div className="loading-bar"> <br /> <LinearProgress color="success"/> </div> }
+            {error ?
+              <Box className="errorbox">
+                {/* <div className='error-mex'>{error}</div>  */}
+                <h2>Please log in to see your profile</h2>
+                <Link className="user-page-btn navigatebtn " as="btn" to="/login" >Go to log in </Link>
+                < br />
+              </Box>
+              :
+              <div className="loading-bar"> <br /> <LinearProgress color="success" /> </div>}
           </>
       }
       {/* <Link className="user-page-btn navigatebtn" as="btn" to="/" >Back to Home</Link> */}

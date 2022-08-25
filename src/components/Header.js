@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <Navbar id="navbar-container">
       <Container>
-        <Navbar.Brand as={Link} to='/' className="brand landing-title-sm">🌎🌿🏡 EarthBnB</Navbar.Brand>
+        <Navbar.Brand as={Link} to='/' className="brand landing-title-sm">🏡  EarthBnB</Navbar.Brand>
         <Navbar.Collapse id='basic-navbar-nav' className='justify-content-end'>
           <Nav className="me-auto">
             <Nav.Link as={Link} to='/all-properties'>All Properties</Nav.Link>

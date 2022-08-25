@@ -4,7 +4,7 @@ import { Typography } from "@mui/material/Typography"
 
 const Footer = () => {
   return (
-    <Box component="footer" class="fixed-bottom" >
+    <Box component="footer" className="fixed-bottom" >
       
         <Container>
       <p>Created by  

@@ -9,6 +9,8 @@ import TextareaAutosize from "@mui/material/TextareaAutosize"
 import Box from "@mui/material/Box"
 import { useParams } from "react-router-dom"
 
+import { API_URL } from "../config"
+
 
 
 const UpdateReview = () => {
@@ -21,34 +23,57 @@ const UpdateReview = () => {
   let { propertyId, reviewId } = useParams()
 
   const [data, setData] = useState({
-    rating: "",
-    title: "",
-    text: "",
+    // rating: "",
+    // title: "",
+    // text: "",
   })
 
   const navigate = useNavigate()
 
   const [error, setError] = useState('')
-  const [message, setMessage] = useState("")
+  const [message, setMessage] = useState('')
+  const [oldData, setOldData] = useState([])
 
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value })
     setError('')
-    console.log(data)
+    console.log("handlechange data: ", data)
   }
 
-  
+  //!get old revierw data
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        console.log({ propertyId }, { reviewId })
+        const { data } = await axios.get(`${API_URL}/properties/${propertyId}/reviews/${reviewId}`)
+        setOldData(data)
+      } catch (error) {
+        console.log(error)
+        setError(error.response.data.message)
+      }
+    }
+    getData()
+  }, [])
+
+
+  console.log("old data", oldData)
+  const { oldReview } = oldData
+
+  //setData with the old review spread -> is the value/shows in text fields
+
+
   const onSubmit = async (event) => {
 
     event.preventDefault()
 
     try {
       // API request -> POST req
-      const res = await axios.put(`https://project3-earthbnb.herokuapp.com/properties/${propertyId}/${reviewId}`, data)
+      const res = await axios.put(`${API_URL}/properties/${propertyId}/reviews/${reviewId}`, data)
       setError("")
       //save the response
-      //setMessage(res.data.message)
-      console.log(res.data)
+      setMessage(res.data.message)
+      console.log("submit res ", res.data)
       //WAIT and go to 
       setTimeout(navigate("/userprofile"), 4000)
 
@@ -72,12 +97,12 @@ const UpdateReview = () => {
             <h3 className="text-center">Update your review</h3>
             <Box className='submitbox'>
               <div>Rating *</div>
-              <Slider aria-label="Rating" defaultValue={1} valueLabelDisplay="auto" step={1} marks min={1} max={5} onChange={handleChange} name="rating" />
+              <Slider aria-label="Rating" defaultValue={data.rating} valueLabelDisplay="auto" step={1} marks min={1} max={5} onChange={handleChange} name="rating" />
               <TextField required className="form-input" id="outlined 1" name="title" label="Title" value={data.title} onChange={handleChange} />
               <TextareaAutosize required className="form-input autosize" id="outlined-required" minRows={2} name="text" placeholder="Text *" value={data.text} onChange={handleChange} />
               {error && <div className="error-mex">{error}</div>}
               <input type="submit" value="Update" className='submitbtn' />
-              {{ message } && <div className="oksubmit">{message}</div>}
+              {message && <div className="oksubmit">{message}</div>}
             </Box>
           </form>
         </Row>
