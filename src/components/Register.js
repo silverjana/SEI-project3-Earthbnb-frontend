@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row'
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { API_URL } from '../config'
 
 const Register = () => {
 
@@ -38,7 +39,7 @@ const Register = () => {
 
     try {
       // API request -> POST req to login
-      await axios.post("https://project3-earthbnb.herokuapp.com/register", data)
+      await axios.post(`${API_URL}/register`, data)
       //setError(null)
       //go to 
       navigate("/login")

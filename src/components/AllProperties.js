@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card'
 import { Link } from "react-router-dom"
 import { Carousel } from "react-bootstrap"
 import { LinearProgress } from "@mui/material"
-
+import { API_URL } from "../config"
 
 const AllProperties = () => {
 
@@ -19,7 +19,7 @@ const AllProperties = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get('https://project3-earthbnb.herokuapp.com/all-properties')
+        const { data } = await axios.get(`${API_URL}/all-properties`)
         setAllProps(data)
 
       } catch (error) {

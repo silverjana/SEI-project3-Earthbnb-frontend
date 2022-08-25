@@ -8,7 +8,7 @@ import Slider from "@mui/material/Slider"
 import TextareaAutosize from "@mui/material/TextareaAutosize"
 import Box from "@mui/material/Box"
 import { useParams } from "react-router-dom"
-
+import { API_URL } from "../config"
 
 
 const AddReview = () => {
@@ -46,7 +46,7 @@ const AddReview = () => {
 
     try {
       // API request -> POST req
-      const res = await axios.post(`https://project3-earthbnb.herokuapp.com/review/${propertyId}`, data)
+      const res = await axios.post(`${API_URL}/${propertyId}/review`, data)
       //save the response
       setMessage(res.data.message)
       //WAIT and go to 

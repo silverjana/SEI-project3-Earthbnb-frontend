@@ -9,6 +9,8 @@ import TextareaAutosize from "@mui/material/TextareaAutosize"
 import Box from "@mui/material/Box"
 import { useParams } from "react-router-dom"
 
+import { API_URL } from "../config"
+
 
 
 const UpdateReview = () => {
@@ -43,7 +45,8 @@ const UpdateReview = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get(`https://project3-earthbnb.herokuapp.com/properties/${propertyId}/reviews/${reviewId}`)
+        console.log({ propertyId }, { reviewId })
+        const { data } = await axios.get(`${API_URL}/properties/${propertyId}/reviews/${reviewId}`)
         setOldData(data)
       } catch (error) {
         console.log(error)
@@ -53,15 +56,9 @@ const UpdateReview = () => {
     getData()
   }, [])
 
-  let oldReview
 
   console.log("old data", oldData)
-
-  //   //const { reviews } = oldData
-  // oldReview = oldData.filter(review => review._id === reviewId)
-  // console.log("old review", oldReview)
-  
-
+  const { oldReview } = oldData
 
   //setData with the old review spread -> is the value/shows in text fields
 
@@ -72,7 +69,7 @@ const UpdateReview = () => {
 
     try {
       // API request -> POST req
-      const res = await axios.put(`https://project3-earthbnb.herokuapp.com/properties/${propertyId}/reviews/${reviewId}`, data)
+      const res = await axios.put(`${API_URL}/properties/${propertyId}/reviews/${reviewId}`, data)
       setError("")
       //save the response
       setMessage(res.data.message)
