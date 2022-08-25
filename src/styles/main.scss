@@ -347,9 +347,9 @@ a {
   font-family:Kobajeon;
   color: $btn-hover-text;
   text-shadow: 2px 2px 4px rgb(49, 59, 53);
-  font-size: 11rem;
+  font-size: 17vh;
   padding: 0;
-  margin: auto;
+  margin: 0 auto;
 }
 .landing-title-sm{
   font-family:Kobajeon;
@@ -371,11 +371,13 @@ span {
   color: $btn-hover-text;
 }
 
-.my-property-card {
-  min-height: max-content;
-
+.review-card {
+  margin-bottom: 20px;
+  .card-body{
+  height: max-content;
+  }
   p {
-    margin-top: 10px !important;
+    margin-top: 10px;
   }
 }
 
@@ -388,16 +390,6 @@ span {
   margin: 50px auto;
   background-color: white;
 }
-
-
-.error-mex {
-  color: rgb(218, 5, 5);
-  background-color: rgba(218, 5, 5, 0.172);
-  border-radius: 5px;
-  padding: 17px;
-  margin: 9px;
-}
-
 .submitbox {
   min-width: 60%;
   display: flex;
@@ -413,6 +405,25 @@ span {
 .form-page {
   background-color: $form-bgcolor;
 }
+
+/* error / ok message */
+
+.error-mex {
+  color: rgb(218, 5, 5);
+  background-color: rgba(218, 5, 5, 0.172);
+  border-radius: 5px;
+  padding: 17px;
+  margin: 9px;
+}
+
+.oksubmit{
+  color: rgb(0, 132, 0);
+  background-color: rgba(0, 132, 0, 0.2);
+  border-radius: 5px;
+  padding: 17px;
+  margin: 9px;
+}
+
 
 /* --  BUTTONS --  */
 
@@ -434,11 +445,18 @@ span {
   background-color: $button-color;
   max-width: 200px;
   align-self: center;
-}
+  margin-top: 5px;
+  }
 
 .navigatebtn:hover {
   color: $btn-hover-text;
   background-color: $button-hover-bg;
+}
+.navigatebtn-spaced{
+  background-color: $button-color;
+  max-width: 200px;
+  align-self: center;
+  margin:8px;
 }
 
 /* -  add review -  */
@@ -484,11 +502,6 @@ slider {
     max-width: 30%;
   }
 }
-
-a {
-  color: $btn-hover-text;
-}
-
 
 /* ---  FOOTER ---  */
 

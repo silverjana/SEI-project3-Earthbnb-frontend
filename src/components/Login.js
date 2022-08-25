@@ -19,7 +19,7 @@ const Login = () => {
   const navigate = useNavigate()
 
   const [error, setError] = useState('')
-
+  const [login, setlogin] = useState(false)
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value })
     setError('')
@@ -41,7 +41,8 @@ const Login = () => {
       //put token in header for all requests, with bearer
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
       //go to 
-      navigate("/userprofile")
+      //navigate("/userprofile")
+      setlogin(true)
 
     } catch (error) {
       console.log(error)
@@ -53,7 +54,13 @@ const Login = () => {
       //error={error ? true : false }
       
     }
+
   }
+
+  const handleClick = () => {
+    navigate(-1)
+  }
+
 
   return (
     <main className='form-page'>
@@ -65,6 +72,7 @@ const Login = () => {
             <TextField error={error ? true : false } required className="form-input" id="outlined-password-input" type="password" name='password' label="Password" value={data.password} onChange={handleChange} />
             {error && <div className='error-mex'>{error}</div>}
             <input type="submit" value="Login" className='submitbtn-fixed'/>
+            {login && <button className='btn oksubmit' onClick={handleClick}>Done! Click here to go back</button>}
           </form>
         </Row>
       </Container>
