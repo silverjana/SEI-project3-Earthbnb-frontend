@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { API_URL } from '../config'
 
 const Login = () => {
   //when coming back to page, scroll to top
@@ -32,7 +33,7 @@ const Login = () => {
 
     try {
       // API request -> POST req to login
-      const res = await axios.post("https://project3-earthbnb.herokuapp.com/login", data)
+      const res = await axios.post(`${API_URL}/login`, data)
       //setError(null)
       //token is the response
       const { token } = res.data
@@ -52,7 +53,7 @@ const Login = () => {
       //! error on forms
       //helperText={error ? "Incorrect entry" : false}
       //error={error ? true : false }
-      
+
     }
 
   }
@@ -68,10 +69,10 @@ const Login = () => {
         <Row>
           <form className='form' onSubmit={onSubmit}>
             <h3 className="text-center">Login</h3>
-            <TextField error={error ? true : false } required className="form-input" id="outlined-required" name='userName' label="Username" value={data.userName} onChange={handleChange} />
-            <TextField error={error ? true : false } required className="form-input" id="outlined-password-input" type="password" name='password' label="Password" value={data.password} onChange={handleChange} />
+            <TextField error={error ? true : false} required className="form-input" id="outlined-required" name='userName' label="Username" value={data.userName} onChange={handleChange} />
+            <TextField error={error ? true : false} required className="form-input" id="outlined-password-input" type="password" name='password' label="Password" value={data.password} onChange={handleChange} />
             {error && <div className='error-mex'>{error}</div>}
-            <input type="submit" value="Login" className='submitbtn-fixed'/>
+            <input type="submit" value="Login" className='submitbtn-fixed' />
             {login && <button className='btn oksubmit' onClick={handleClick}>Done! Click here to go back</button>}
           </form>
         </Row>
