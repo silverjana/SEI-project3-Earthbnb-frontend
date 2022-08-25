@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import Form from 'react-bootstrap/Form';
 import { useEffect } from "react"
 import Uploading from "./Uploading.js";
+import { Box } from "@mui/system";
 
 
 const AddProperty = () => {
@@ -81,16 +82,17 @@ const AddProperty = () => {
           <form className="form" onSubmit={onSubmit}>
             <h3 className="text-center">Add Property</h3>
             {/* add value={formData.username; .email; .password; .passwordConfirmation} */}
+            <Box className="submitbox">
             <TextField required error={userError ? true : false} className="form-input" id="outlined-required" name='name' label="Property Name" value={data.name} onChange={handleChange} />
             <div className="select-property-type">
               <select className="type-select" name='type' onChange={handleChange}>
-                  <option value='All'>All</option>
+                  <option disabled value='All'>Choose type</option>
                   <option value='cabin'>Cabins</option>
                   <option value='city'>City</option>
                   <option value='country'>Country</option>
                   <option value='camping'>Camp</option>
                   <option value='beach'>Beach</option>
-               </select>
+              </select>
             </div>
             <TextField required error={userError ? true : false} className="form-input" id="outlined-textarea" name='description' label="Description" value={data.description} onChange={handleChange} multiline />
 
@@ -101,7 +103,8 @@ const AddProperty = () => {
             <Uploading name='images' setData={setData} data={data}/>
           
             {error && <div className='error-mex'>{error}</div>}
-            <input type="submit" value="Submit" className='btn dark w-100' />
+            <input type="submit" value="Submit" className='btn submitbtn' />
+            </Box>
           </form>
         </Row>
        
