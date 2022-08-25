@@ -76,12 +76,15 @@ const UserProfile = () => {
                     const { _id, title, text, rating, propertyId} = review
                     return (
                       <Col key={_id} md='6' className="mb-5">
-                        <Card className="property-card">
-                          <Card.Body className="my-property-card">
+                        <Card className="review-card">
+                          <Card.Body >
                             <Card.Title className="card-title">{'⭐️'.repeat(rating)} - {title}</Card.Title>
                             <Card.Text>{text}
-                            <br />
-                            {propertyId && <Link className="user-page-btn navigatebtn" as="link" to={`/properties/${propertyId}`}>Visit the Property</Link>}
+                            <br /><br />
+                            {propertyId && <>
+                            <Link className="user-page-btn navigatebtn-spaced" as="link" to={`/properties/${propertyId}`}>Visit the Property</Link>
+                            <Link className="user-page-btn navigatebtn-spaced" as="link" to={`/review-update/${propertyId}/${_id}/`}>Edit the Review</Link>
+                            </>}
                             </Card.Text>
                           </Card.Body>
                         </Card>

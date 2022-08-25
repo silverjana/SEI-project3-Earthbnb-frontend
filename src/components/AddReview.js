@@ -29,11 +29,13 @@ const AddReview = () => {
   const navigate = useNavigate()
 
   const [error, setError] = useState('')
+  const [login, setLogin] = useState(false)
   const [message, setMessage] = useState("")
 
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value })
     setError('')
+    
     console.log(data)
   }
 
@@ -45,7 +47,6 @@ const AddReview = () => {
     try {
       // API request -> POST req
       const res = await axios.post(`https://project3-earthbnb.herokuapp.com/review/${propertyId}`, data)
-      //setError(null)
       //save the response
       setMessage(res.data.message)
       //WAIT and go to 
@@ -55,7 +56,10 @@ const AddReview = () => {
     } catch (error) {
       console.log(error)
 
-      setError(error.response.data.message)
+      if (error.response.data.message === "Unauthorized - No token provided") {
+        setError("please log in to leave a Review")
+        setLogin(true)
+      } else {setError(error.response.data.message)}
 
 
 
@@ -79,8 +83,9 @@ const AddReview = () => {
               <TextField required className="form-input" id="outlined 1" name="title" label="Title" value={data.title} onChange={handleChange} />
               <TextareaAutosize required className="form-input autosize" id="outlined-required" minRows={2} name="text" placeholder="Text *" value={data.text} onChange={handleChange} />
               {error && <div className="error-mex">{error}</div>}
+              {login && <Link className="user-page-btn navigatebtn " as="btn" to="/login" >Go to log in </Link>} 
               <input type="submit" value="Submit review" className='submitbtn' />
-              {{ message } && <div className="oksubmit">{message}</div>}
+              {message && <div className="oksubmit">{message}</div>}
             </Box>
           </form>
         </Row>
