@@ -18,7 +18,7 @@ const ReviewContainer = ({reviews, id}) => {
                     )
                 })}
               </p>
-              <Link className="user-page-btn navigatebtn" as="link" to={`/review/${id}`}>Leave a review</Link>
+              <Link className="btn navigatebtn-marginbt" as="link" to={`/review/${id}`}>Leave a review</Link>
             </section>
           </Row>
           )
