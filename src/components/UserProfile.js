@@ -43,7 +43,6 @@ const UserProfile = () => {
     } catch (error) {
       console.log(error)
     }
-
   }
 
   return (
