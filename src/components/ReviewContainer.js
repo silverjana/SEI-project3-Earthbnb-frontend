@@ -1,6 +1,4 @@
 import Row from 'react-bootstrap/Row'
-
-
 const ReviewContainer = ({reviews}) => {
     return (
         <Row>

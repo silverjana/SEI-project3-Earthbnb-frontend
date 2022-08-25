@@ -48,7 +48,7 @@ const AllProperties = () => {
       </div>
       <Row>
         {(filterProperty.length > 0 ? filterProperty : allProps).map(property => {
-          const { _id, name, type, price, images } = property
+          const { _id, name, price, images } = property
 
           return (
             <Col key={_id} md='4' className="column-allProp" mb="5">
@@ -60,7 +60,7 @@ const AllProperties = () => {
                         {images.map((image, idx) => {
                           return (
                             <Carousel.Item key={idx}>
-                              <img className="prop-car-img" loading="lazy" src={image} alt={name} />
+                              <img className="prop-car-img" loading="lazy" src={image} alt={name}/>
                             </Carousel.Item>
                           )
                         })}
