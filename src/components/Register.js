@@ -78,7 +78,7 @@ const Register = () => {
             <TextField required error={pwError ? true : false} className="form-input" id="outlined-password-input" type="password" name='password' label="Password" value={data.password} onChange={handleChange} />
             <TextField required error={pwError ? true : false} className="form-input" id="outlined-password-input 2" type="password" name='confirmPassword' label="Confirm Password" value={data.confirmPassword} onChange={handleChange} />
             {error && <div className='error-mex'>{error}</div>}
-            <Link to="/login"><input type="submit" value="Register" className='submitbtn-fixed' /></Link>
+            <input type="submit" value="Register" className='submitbtn-fixed' />
           </form>
         </Row>
       </Container>
