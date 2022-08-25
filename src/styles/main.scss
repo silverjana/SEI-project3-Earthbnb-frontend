@@ -230,10 +230,11 @@ a {
   display: flex;
   justify-content: flex-start;
   margin: 15px;
-
+  margin-left: 1%;
   .type-select {
     width: 120px;
     height: 30px;
+    border-radius: 10px;
   }
 }
 
