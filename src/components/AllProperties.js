@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card'
 import { Link } from "react-router-dom"
 import { Carousel } from "react-bootstrap"
 import { LinearProgress } from "@mui/material"
-
+import { API_URL } from "../config"
 
 const AllProperties = () => {
 
@@ -19,7 +19,7 @@ const AllProperties = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get('https://project3-earthbnb.herokuapp.com/all-properties')
+        const { data } = await axios.get(`${API_URL}/all-properties`)
         setAllProps(data)
 
       } catch (error) {
@@ -48,7 +48,7 @@ const AllProperties = () => {
       </div>
       <Row>
         {(filterProperty.length > 0 ? filterProperty : allProps).map(property => {
-          const { _id, name, type, price, images } = property
+          const { _id, name, price, images } = property
 
           return (
             <Col key={_id} md='4' className="column-allProp" mb="5">
@@ -60,7 +60,7 @@ const AllProperties = () => {
                         {images.map((image, idx) => {
                           return (
                             <Carousel.Item key={idx}>
-                              <img className="prop-car-img" loading="lazy" src={image} alt={name} />
+                              <img className="prop-car-img" loading="lazy" src={image} alt={name}/>
                             </Carousel.Item>
                           )
                         })}
