@@ -6,7 +6,6 @@ import { Row, Col, Container, Card, Carousel } from "react-bootstrap"
 import { Box } from "@mui/system"
 import { LinearProgress } from "@mui/material"
 import { API_URL } from "../config"
-import { Modal, Button } from "react-bootstrap";
 
 const UserProfile = () => {
   //when coming back to page, scroll to top
@@ -34,24 +33,7 @@ const UserProfile = () => {
   const { userName, reviews, myProperties } = userData
   console.log(myProperties, reviews, userName)
 
-  const DeleteConfirmation = ({ showModal, hideModal, confirmModal, id, type, message }) => {
-    return (
-        <Modal show={showModal} onHide={hideModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Delete Confirmation</Modal.Title>
-        </Modal.Header>
-        <Modal.Body><div className="alert alert-danger">{message}</div></Modal.Body>
-        <Modal.Footer>
-          <Button variant="default" onClick={hideModal}>
-            Cancel
-          </Button>
-          <Button variant="danger" onClick={() => confirmModal(type, id) }>
-            Delete
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    )
-}
+ 
 
   const handleDelete = async (propertyId, reviewId) => {
     try {
@@ -112,11 +94,11 @@ const UserProfile = () => {
                       <Card.Title className="card-title">{name}</Card.Title>
                       <Card.Text className="card-text">ppn/£{price}</Card.Text>
                       </Link>
-
-                      <button className="user-page-btn delete-review" onClick={() => handleDeleteProperty(_id)}>Delete This Property</button>
+                       <button className="user-page-btn delete-review" onClick={() => handleDeleteProperty(_id)}>Delete This Property</button>
                     </Card.Body>
                           </Card>
-                      
+                        
+                       
                       </Col>
                     )
                   })
