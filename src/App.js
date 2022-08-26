@@ -16,9 +16,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-
+import axios from 'axios'
 
 function App() {
+  useEffect(() => {
+    const token = localStorage.getItem("EarthBnbToken")
+    axios.defaults.headers.common["Authorization"] = token ? `Bearer ${token}` : null
+  }, [])
   return (
     <div className="App">
       <BrowserRouter>
