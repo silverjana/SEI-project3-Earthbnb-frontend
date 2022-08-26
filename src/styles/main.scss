@@ -230,8 +230,12 @@ a {
 
 .property-heading {
   padding: 30px;
+  padding-left: 40px;
   font-family: $main-font;
   font-weight: 500;
+  text-align: left;
+  font-size: 2rem;
+  margin-bottom: 0;
 }
 
 .large-img {
