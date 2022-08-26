@@ -58,6 +58,13 @@ const UserProfile = () => {
       console.log({propertyId}, {reviewId})
       const deleteReview = await axios.delete(`${API_URL}/properties/${propertyId}/reviews/${reviewId}`)
       console.log('button clicked to delete review ->', deleteReview)
+
+      // Reload component 
+      function refreshPage() {
+        window.location.reload();
+      }
+      refreshPage()
+
     } catch (error) {
       console.log(error)
     }
