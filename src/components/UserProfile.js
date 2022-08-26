@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom"
+import { Link} from "react-router-dom"
 import { useEffect } from "react"
 import { useState } from "react"
 import axios from "axios"
@@ -69,8 +69,8 @@ const UserProfile = () => {
       console.log(error)
     }
   }
-//adding delete property
 
+  //adding delete property
   const handleDeleteProperty = async (propertyId) => {
     try {
       const deleteProperty = await axios.delete(`${API_URL}/properties/${propertyId}`)
