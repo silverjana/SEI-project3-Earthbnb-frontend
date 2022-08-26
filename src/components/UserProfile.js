@@ -20,6 +20,9 @@ const UserProfile = () => {
   useEffect(() => {
     const getData = async () => {
       try {
+        const token = localStorage.getItem("EarthBnbToken")
+        axios.defaults.headers.common["Authorization"] = token ? `Bearer ${token}` : null
+        
         const { data } = await axios.get(`${API_URL}/user-profile`)
         setUserData(data)
       } catch (error) {
