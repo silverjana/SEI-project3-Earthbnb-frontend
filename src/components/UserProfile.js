@@ -7,6 +7,7 @@ import { Box } from "@mui/system"
 import { LinearProgress } from "@mui/material"
 import { API_URL } from "../config"
 
+
 const UserProfile = () => {
   //when coming back to page, scroll to top
   useEffect(() => {
@@ -60,6 +61,12 @@ const UserProfile = () => {
 
     try {
       const deleteProperty = await axios.delete(`${API_URL}/properties/${propertyId}`)
+      
+      function refreshPage() {
+        window.location.reload();
+      }
+      refreshPage()
+
     } catch (error) {
       console.log(error)
     }
