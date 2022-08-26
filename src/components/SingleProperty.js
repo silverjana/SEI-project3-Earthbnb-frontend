@@ -10,6 +10,11 @@ import PropertyHeading from "./PropertyHeading"
 import { Link } from "react-router-dom"
 import { LinearProgress } from "@mui/material"
 import { API_URL } from "../config"
+import { useMemo } from "react"
+import { GoogleMap, useLoadScript, Marker  } from "@react-google-maps/api"
+import Map from "./Map"
+
+
 
 const SingleProperty = () => {
   //when coming back to page, scroll to top
@@ -41,6 +46,11 @@ const SingleProperty = () => {
   }, [pathname]);
 
   console.log(property)
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+  });
+  
   return (
     <Container as='main'>
       {property ?
@@ -58,6 +68,15 @@ const SingleProperty = () => {
               <p className="amenities-para">{property.amenities.map((amenity, idx) => {
                 return (<div key={idx}>{amenity}</div>)
               })}</p>
+            </section>
+          </Row>
+          <Row>
+          <section className="amenities-container">
+              <h3 className='descript-heading'>Location:</h3>
+              {(!isLoaded) ? <div>Loading...</div> : 
+              <Map/>
+              } 
+
             </section>
           </Row>
 
