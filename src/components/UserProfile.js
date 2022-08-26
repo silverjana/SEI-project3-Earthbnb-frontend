@@ -82,10 +82,10 @@ const UserProfile = () => {
                     )
                   })
                   :
-                  <div>You don't have any properties listed</div>
+                  <div className="spaced">You don't have any properties listed</div>
                 }
                 <div>
-                <Link className="user-page-btn navigatebtn" as="btn" to="/add-property" >Add a property</Link>
+                <Link className="user-page-btn navigatebtn-spaced" as="btn" to="/add-property" >Add a property</Link>
                 </div>
               </Row>
             </Container>
@@ -109,7 +109,7 @@ const UserProfile = () => {
                                 <Link className="user-page-btn navigatebtn-spaced" as="link" to={`/review-update/${propertyId}/${_id}/`}>Edit the Review</Link>
                               </>}
                             </Card.Text>
-                            <button className="delete-review" onClick={() => handleDelete(propertyId, _id)}>Delete This Review</button> 
+                            <button className="user-page-btn delete-review" onClick={() => handleDelete(propertyId, _id)}>Delete This Review</button> 
                           </Card.Body>
                         </Card>
                       </Col>

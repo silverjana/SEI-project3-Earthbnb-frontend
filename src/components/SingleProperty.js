@@ -89,7 +89,7 @@ const SingleProperty = () => {
             <div className="review-container">
               <h3 className="review-heading">Reviews:</h3>
               <p className="review-para">There are no reviews for this property</p>
-              <Link className="user-page-btn navigatebtn" as="link" to={`/review/${id}`}>Leave a review</Link>
+              <Link className="btn navigatebtn-marginbt" as="link" to={`/review/${id}`}>Leave a review</Link>
             </div>
           }
         </>

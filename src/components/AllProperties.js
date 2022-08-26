@@ -37,12 +37,12 @@ const AllProperties = () => {
   return (
     <Container as='main'>
       <div className="filter-div">
-        <select className="type-select" name='type' onChange={handleChange}>
-          <option value='All'>All</option>
+        <select className="type-select-all" name='type' onChange={handleChange}>
+          <option value='All'>All Properties</option>
           <option value='cabin'>Cabins</option>
           <option value='city'>City</option>
           <option value='country'>Country</option>
-          <option value='camping'>Camp</option>
+          <option value='camping'>Camping</option>
           <option value='beach'>Beach</option>
         </select>
       </div>
