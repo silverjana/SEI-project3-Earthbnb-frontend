@@ -47,6 +47,7 @@ const UserProfile = () => {
 //adding delete property
 
   const handleDeleteProperty = async (propertyId) => {
+
     try {
       const deleteProperty = await axios.delete(`${API_URL}/properties/${propertyId}`)
     } catch (error) {

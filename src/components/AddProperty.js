@@ -9,6 +9,7 @@ import Form from 'react-bootstrap/Form';
 import { useEffect } from "react"
 import Uploading from "./Uploading.js";
 import { Box } from "@mui/system";
+import { API_URL } from "../config"
 
 
 const AddProperty = () => {
