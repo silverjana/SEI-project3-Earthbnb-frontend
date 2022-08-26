@@ -71,13 +71,13 @@ const SingleProperty = () => {
             </section>
           </Row>
           <Row>
-          <section className="amenities-container">
+          {/* <section className="amenities-container">
               <h3 className='descript-heading'>Location:</h3>
               {(!isLoaded) ? <div>Loading...</div> : 
               <Map/>
               } 
 
-            </section>
+            </section> */}
           </Row>
 
           {property.reviews.length > 0 ?

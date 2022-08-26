@@ -6,6 +6,7 @@ import { Row, Col, Container, Card, Carousel } from "react-bootstrap"
 import { Box } from "@mui/system"
 import { LinearProgress } from "@mui/material"
 import { API_URL } from "../config"
+import { Modal, Button } from "react-bootstrap";
 
 const UserProfile = () => {
   //when coming back to page, scroll to top
@@ -33,13 +34,39 @@ const UserProfile = () => {
   const { userName, reviews, myProperties } = userData
   console.log(myProperties, reviews, userName)
 
- 
+  const DeleteConfirmation = ({ showModal, hideModal, confirmModal, id, type, message }) => {
+    return (
+        <Modal show={showModal} onHide={hideModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Confirmation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body><div className="alert alert-danger">{message}</div></Modal.Body>
+        <Modal.Footer>
+          <Button variant="default" onClick={hideModal}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={() => confirmModal(type, id) }>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    )
+}
 
   const handleDelete = async (propertyId, reviewId) => {
     try {
       console.log({propertyId}, {reviewId})
       const deleteReview = await axios.delete(`${API_URL}/properties/${propertyId}/reviews/${reviewId}`)
       console.log('button clicked to delete review ->', deleteReview)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+//adding delete property
+
+  const handleDeleteProperty = async (propertyId) => {
+    try {
+      const deleteProperty = await axios.delete(`${API_URL}/properties/${propertyId}`)
     } catch (error) {
       console.log(error)
     }
@@ -59,11 +86,13 @@ const UserProfile = () => {
                   ?
                   myProperties.map(property => {
                     const { _id, name, type, price, images } = property
+                    console.log(_id)
                     return (
                       <Col key={_id} md='4' className="mb-5">
-                        <Link to={`/properties/${_id}`}>
+                        
                           <Card className="property-card">
                           <Card.Body>
+                          <Link to={`/properties/${_id}`}>
                       <Carousel className='carousel' interval={null} variant='top'>
                         {images.map((image, idx) => {
                           return (
@@ -75,9 +104,12 @@ const UserProfile = () => {
                       </Carousel>
                       <Card.Title className="card-title">{name}</Card.Title>
                       <Card.Text className="card-text">ppn/£{price}</Card.Text>
+                      </Link>
+
+                      <button className="user-page-btn delete-review" onClick={() => handleDeleteProperty(_id)}>Delete This Property</button>
                     </Card.Body>
                           </Card>
-                        </Link>
+                      
                       </Col>
                     )
                   })

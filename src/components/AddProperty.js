@@ -47,7 +47,7 @@ const AddProperty = () => {
 
     try {
       // API request -> POST req to login
-      await axios.post("https://project3-earthbnb.herokuapp.com/add-property", data)
+      await axios.post(`${API_URL}/add-property`, data)
       //setError(null)
       //go to 
       navigate("/userprofile")
