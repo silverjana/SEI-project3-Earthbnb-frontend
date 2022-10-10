@@ -1,6 +1,4 @@
 import { Box, Container } from "@mui/system"
-import { Typography } from "@mui/material/Typography"
-
 
 const Footer = () => {
   return (

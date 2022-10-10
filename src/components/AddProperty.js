@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom"
+
 import TextField from '@mui/material/TextField';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Form from 'react-bootstrap/Form';
+
 import { useEffect } from "react"
 import Uploading from "./Uploading.js";
 import { Box } from "@mui/system";
@@ -29,8 +29,10 @@ const AddProperty = () => {
   const navigate = useNavigate()
 
   const [error, setError] = useState('')
-  const [pwError, setPwError] = useState('')
-  const [emailError, setEmailError] = useState('')
+  // const [pwError, setPwError] = useState('')
+  // console.log(pwError)
+  // const [emailError, setEmailError] = useState('')
+  // console.log(emailError)
   const [userError, setUserError] = useState('')
 
   //update data with each change
@@ -38,8 +40,8 @@ const AddProperty = () => {
     setData({ ...data, [event.target.name]: event.target.value })
     //reset error
     setError('')
-    setPwError('')
-    setEmailError('')
+    // setPwError('')
+    // setEmailError('')
     setUserError('')
   }
 
@@ -58,12 +60,12 @@ const AddProperty = () => {
 
       setError(error.response.data.message)
 
-      if (error.response.data.message === 'Passwords do not match.') {
-        setPwError('yep')
-      }
-      if (error.response.data.message === "User with this email already exists") {
-        setEmailError('yep')
-      }
+      // if (error.response.data.message === 'Passwords do not match.') {
+      //   setPwError('yep')
+      // }
+      // if (error.response.data.message === "User with this email already exists") {
+      //   setEmailError('yep')
+      // }
       if (error.response.data.message === "User with this username already exists") {
         setUserError('yep')
       }

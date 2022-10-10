@@ -37,7 +37,7 @@ const UserProfile = () => {
   const { userName, reviews, myProperties } = userData
   console.log(myProperties, reviews, userName)
 
- 
+
 
   const handleDelete = async (propertyId, reviewId) => {
     try {
@@ -60,7 +60,7 @@ const UserProfile = () => {
   const handleDeleteProperty = async (propertyId) => {
 
     try {
-      const deleteProperty = await axios.delete(`${API_URL}/properties/${propertyId}`)
+      await axios.delete(`${API_URL}/properties/${propertyId}`)
       
       function refreshPage() {
         window.location.reload();
@@ -85,7 +85,7 @@ const UserProfile = () => {
                 {myProperties.length > 0
                   ?
                   myProperties.map(property => {
-                    const { _id, name, type, price, images } = property
+                    const { _id, name, price, images } = property
                     console.log(_id)
                     return (
                       <Col key={_id} md='4' className="mb-5">
@@ -105,11 +105,11 @@ const UserProfile = () => {
                       <Card.Title className="card-title">{name}</Card.Title>
                       <Card.Text className="card-text">ppn/£{price}</Card.Text>
                       </Link>
-                       <button className="user-page-btn delete-review" onClick={() => handleDeleteProperty(_id)}>Delete This Property</button>
+                      <button className="user-page-btn delete-review" onClick={() => handleDeleteProperty(_id)}>Delete This Property</button>
                     </Card.Body>
                           </Card>
                         
-                       
+                      
                       </Col>
                     )
                   })

@@ -29,7 +29,7 @@ const Uploading = ({setData, data}) => {
       <FormGroup>
         <input type="file" name="file" placeholder="Upload image here" onChange={UploadImage} />
         <br />
-        {loading ? (<h3>Loading...</h3>) : <img src={data.images} style={{width: "200px"}}/>}
+        {loading ? (<h3>Loading...</h3>) : <img src={data.images} style={{width: "200px"}} alt="uploaded" />}
       </FormGroup>
     </Container>
   </div>)
